@@ -48,13 +48,13 @@ document.addEventListener("keyup", (e) => {
     // }
 
     if ((pressedKey.toString() == 0 || pressedKey.toString() == 1)) {
-        toastr.success("thanks for entering 0 or 1")
+        insertLetter(pressedKey)
+        // toastr.success("thanks for entering 0 or 1")
     } else {
         toastr.error("Not an accepted input. Please enter 0 or 1")
+        return
     }
  
-    insertLetter(pressedKey)
-
     // if (!found) { //|| found.length > 1
     //     return
     // } else {
