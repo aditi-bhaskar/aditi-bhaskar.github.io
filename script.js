@@ -35,7 +35,9 @@ document.addEventListener("keyup", (e) => {
     }
 
     // let found = pressedKey.match(/[0-1]/gi)
-    let found = pressedKey
+    let found = pressedKey.match(/[a-z]/gi)
+
+    // let found = pressedKey
     if (!found || found.length > 1) {
         return
     } else {
