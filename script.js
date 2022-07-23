@@ -47,8 +47,10 @@ document.addEventListener("keyup", (e) => {
     //     // let found = true
     // }
 
-    if (!(pressedKey.toString() == 0 || pressedKey.toString() == 1)) {
-        toastr.error("Not an accepted input. please enter 0 or 1")
+    if ((pressedKey.toString() == 0 || pressedKey.toString() == 1)) {
+        toastr.success("thanks for entering 0 or 1")
+    } else {
+        toastr.error("Not an accepted input. Please enter 0 or 1")
     }
  
     insertLetter(pressedKey)
@@ -186,7 +188,7 @@ function checkGuess () {
 
         if (guessesRemaining === 0) {
             toastr.error("You've run out of guesses! Game over!")
-            toastr.info(`The right byte was: "${rightGuessString}"`)
+            toastr.info(`The correct  byte was: "${rightGuessString}"`)
         }
     }
 }
