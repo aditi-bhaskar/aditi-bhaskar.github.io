@@ -38,29 +38,23 @@ document.addEventListener("keyup", (e) => {
 
     toastr.success("entered char: " + pressedKey)
 
-    let found = true  //hardcode true for now
-
     // if (pressedKey === 0) {
     //     toastr.success("found the char; 0")
-    //     // found = true
+    //     // let found = true
     // }
     // else if (pressedKey === 1) {
     //     toastr.success("found the char; 0")
-    //     // found = true
+    //     // let found = true
     // }
 
-    if (!found) { //|| found.length > 1
-        return
-    } else {
+    toastr.success("inserting character: " + pressedKey)
+    insertLetter(pressedKey)
 
-        // if (pressedKey == 0) {
-        //     strPressedKey = "0"
-        // }
-        // else if (pressedKey == 1) {
-        //     strPressedKey = "1"
-        // }
-        insertLetter(strPressedKey)
-    }
+    // if (!found) { //|| found.length > 1
+    //     return
+    // } else {
+    //     insertLetter(strPressedKey)
+    // }
 })
 
 document.getElementById("keyboard-cont").addEventListener("click", (e) => {
