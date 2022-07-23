@@ -5,8 +5,9 @@ let nextLetter = 0;
 
 // old colors: green, seagreen
 const correctColor = 'darkseagreen'
-// old colors: firebrick, yellow
+// old colors: yellow, firebrick
 const semiCorrectColor = 'lightcoral'
+// old colors: grey
 const incorrectColor = 'lightgray'
 
 // 8 characters
@@ -122,12 +123,6 @@ function checkGuess () {
         return
     }
 
-    // don't have this problem bc it's just a byte
-    // if (!WORDS.includes(guessString)) {
-    //     toastr.error("Word not in list!")
-    //     return
-    // }
-    
     for (let i = 0; i < 8; i++) {
         let letterColor = ''
         let box = row.children[i]
@@ -135,7 +130,7 @@ function checkGuess () {
         
         let letterPosition = rightGuess.indexOf(currentGuess[i])
 
-        // is letter in the correct guess
+        // todo: edit the logic
         if (currentGuess[i] == rightGuess[i]) {
             letterColor = correctColor
             rightGuess[letterPosition] = "#"
