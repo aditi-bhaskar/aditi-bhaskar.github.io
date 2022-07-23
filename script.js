@@ -91,7 +91,7 @@ function initBoard() {
 }
 
 function insertLetter (pressedKey) {
-    if (nextLetter >= 8) {
+    if (nextLetter == 8) {
         return
     }
     pressedKey = pressedKey.toLowerCase()
