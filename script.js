@@ -50,7 +50,7 @@ document.addEventListener("keyup", (e) => {
     if (pressedKey.toString() != 0 || pressedKey.toString() != 1) {
         toastr.error("Not an accepted input. please enter 0 or 1")
     }
-
+ 
     insertLetter(pressedKey)
 
     // if (!found) { //|| found.length > 1
