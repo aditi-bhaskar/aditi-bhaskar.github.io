@@ -37,6 +37,7 @@ document.addEventListener("keyup", (e) => {
     // let found = pressedKey.match(/[a-z]/gi)
 
     if (pressedKey === 0 || pressedKey === 1) {
+        toastr.success("found the char; either 0 or 1")
         found = true
     }
 
