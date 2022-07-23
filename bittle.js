@@ -134,22 +134,32 @@ function checkGuess () {
         let letter = currentGuess[i]
         
         let letterPosition = rightGuess.indexOf(currentGuess[i])
+
         // is letter in the correct guess
-        if (letterPosition === -1) {
+        if (currentGuess[i] == rightGuess[i]) {
+            letterColor = correctColor
+            rightGuess[letterPosition] = "#"
+        } else if (letterPosition == -1) {
             letterColor = incorrectColor
         } else {
-            // now, letter is definitely in word
-            // if letter index and right guess index are the same
-            // letter is in the right position 
-            if (currentGuess[i] === rightGuess[i]) {
-                letterColor = correctColor
-            } else {
-                letterColor = semiCorrectColor
-                
-            }
-
+            letterColor = semiCorrectColor
             rightGuess[letterPosition] = "#"
         }
+
+        // // is letter in the correct guess
+        // if (letterPosition === -1) {
+        //     letterColor = incorrectColor
+        // } else {
+        //     // now, letter is definitely in word
+        //     // if letter index and right guess index are the same
+        //     // letter is in the right position 
+        //     if (currentGuess[i] == rightGuess[i]) {
+        //         letterColor = correctColor
+        //     } else {
+        //         letterColor = semiCorrectColor
+        //     }
+        //     rightGuess[letterPosition] = "#"
+        // }
 
         let delay = 250 * i
         setTimeout(()=> {
