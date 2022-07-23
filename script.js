@@ -3,6 +3,12 @@ let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
 
+// old colors: green, seagreen
+const correctColor = 'dark seagreen'
+// old colors: firebrick, yellow
+const semiCorrectColor = 'lightcoral'
+const incorrectColor = 'grey'
+
 // 8 characters
 let rightGuessString = (Math.floor(Math.random() * 2)).toString();
 for (let i = 0; i < 7; i++) {
@@ -130,17 +136,15 @@ function checkGuess () {
         let letterPosition = rightGuess.indexOf(currentGuess[i])
         // is letter in the correct guess
         if (letterPosition === -1) {
-            letterColor = 'grey'
+            letterColor = incorrectColor
         } else {
             // now, letter is definitely in word
             // if letter index and right guess index are the same
             // letter is in the right position 
             if (currentGuess[i] === rightGuess[i]) {
-                // old colord: green, seagreen
-                letterColor = 'dark seagreen'
+                letterColor = correctColor
             } else {
-                // old colors: firebrick, yellow
-                letterColor = 'lightcoral'
+                letterColor = semiCorrectColor
                 
             }
 
@@ -177,11 +181,11 @@ function shadeKeyBoard(letter, color) {
     for (const elem of document.getElementsByClassName("keyboard-button")) {
         if (elem.textContent === letter) {
             let oldColor = elem.style.backgroundColor
-            if (oldColor === 'green') {
+            if (oldColor === correctColor) {
                 return
             } 
 
-            if (oldColor === 'yellow' && color !== 'green') {
+            if (oldColor === semiCorrectColor && color !== correctColor) {
                 return
             }
 
