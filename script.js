@@ -37,7 +37,7 @@ document.addEventListener("keyup", (e) => {
     // let found = pressedKey.match(/[a-z]/gi)
 
     // let found = pressedKey.match
-    if (pressedKey === "0" | pressedKey === "1") {
+    if (pressedKey === "0" || pressedKey === "1") {
         let found = true
     }
 
@@ -83,7 +83,7 @@ function initBoard() {
 }
 
 function insertLetter (pressedKey) {
-    if (nextLetter === 5) {
+    if (nextLetter === 8) {
         return
     }
     pressedKey = pressedKey.toLowerCase()
