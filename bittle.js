@@ -7,7 +7,7 @@ let nextLetter = 0;
 const correctColor = 'darkseagreen'
 // old colors: firebrick, yellow
 const semiCorrectColor = 'lightcoral'
-const incorrectColor = 'grey'
+const incorrectColor = 'lightgray'
 
 // 8 characters
 let rightGuessString = (Math.floor(Math.random() * 2)).toString();
