@@ -1,14 +1,14 @@
 import { WORDS } from "./words.js";
 
-const NUMBER_OF_GUESSES = 6;
+const NUMBER_OF_GUESSES = 3;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
 
 // 8 characters
-let rightGuessString = String(Math.floor(Math.random() * 2));
+let rightGuessString = (Math.floor(Math.random() * 2)).toString();
 for (let i = 0; i < 7; i++) {
-    rightGuessString += String(Math.floor(Math.random() * 2));
+    rightGuessString += (Math.floor(Math.random() * 2)).toString();
 }
 
 console.log(rightGuessString)
@@ -35,13 +35,12 @@ document.addEventListener("keyup", (e) => {
     if (pressedKey.toString() == 0 || pressedKey.toString() == 1) {
         insertLetter(pressedKey)
         // toastr.success("thanks for entering 0 or 1")
-    } else if (pressedKey.toString() == " ") {
-        toastr.error("Not an accepted input. Please enter 0 or 1")
-        return
+
     } else {
         toastr.error("Not an accepted input. Please enter 0 or 1")
         return
     }
+    //todo: consider  if (pressedKey.toString() == " ")
 
 })
 
