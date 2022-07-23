@@ -5,13 +5,13 @@ let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
 
-// let answer = void;
 
-// for (let i = 0; i < 8; i++) {
-//     answer += StringMath.floor(Math.random() * 2);
-// }
+let rightGuessString ;
+for (let i = 0; i < 8; i++) {
+    rightGuessString += StringMath.floor(Math.random() * 2);
+}
 
-let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)]
+// let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)]
 
 console.log(rightGuessString)
 
@@ -36,8 +36,6 @@ document.addEventListener("keyup", (e) => {
 
     // let found = pressedKey.match(/[a-z]/gi)
 
-    toastr.success("entered char, now inserting: " + pressedKey)
-
     // if (pressedKey === 0) {
     //     toastr.success("found the char; 0")
     //     // let found = true
@@ -47,9 +45,12 @@ document.addEventListener("keyup", (e) => {
     //     // let found = true
     // }
 
-    if ((pressedKey.toString() == 0 || pressedKey.toString() == 1)) {
+    if (pressedKey.toString() == 0 || pressedKey.toString() == 1) {
         insertLetter(pressedKey)
         // toastr.success("thanks for entering 0 or 1")
+    } else if (pressedKey.toString() == " ") {
+        toastr.error("Not an accepted input. Please enter 0 or 1")
+        return
     } else {
         toastr.error("Not an accepted input. Please enter 0 or 1")
         return
