@@ -40,11 +40,11 @@ document.addEventListener("keyup", (e) => {
 
     let found = true  //hardcode true for now
 
-    if (pressedKey == 0) {
+    if (pressedKey === 0) {
         toastr.success("found the char; 0")
         // found = true
     }
-    else if (pressedKey == 1) {
+    else if (pressedKey === 1) {
         toastr.success("found the char; 0")
         // found = true
     }
