@@ -1,5 +1,3 @@
-import { WORDS } from "./words.js";
-
 const NUMBER_OF_GUESSES = 3;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
