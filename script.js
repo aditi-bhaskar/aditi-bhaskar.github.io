@@ -158,7 +158,7 @@ function checkGuess () {
             // letter is in the right position 
             if (currentGuess[i] === rightGuess[i]) {
                 // shade green 
-                letterColor = 'green'
+                letterColor = 'lightgreen'
             } else {
                 // shade box yellow
                 letterColor = 'yellow'
