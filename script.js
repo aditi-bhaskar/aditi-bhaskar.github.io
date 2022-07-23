@@ -38,6 +38,8 @@ document.addEventListener("keyup", (e) => {
 
     toastr.success("entered char: " + pressedKey)
 
+    let found = true  //hardcode true for now
+
     if (pressedKey == 0) {
         toastr.success("found the char; 0")
         found = true
