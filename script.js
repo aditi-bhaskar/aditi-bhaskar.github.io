@@ -11,6 +11,7 @@ for (let i = 0; i < 7; i++) {
 
 console.log(rightGuessString)
 
+toastr.error("going to init board")
 initBoard()
 
 document.addEventListener("keyup", (e) => {
