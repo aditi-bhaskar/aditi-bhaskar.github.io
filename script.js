@@ -1,11 +1,11 @@
 import { WORDS } from "./words.js";
 
-const NUMBER_OF_GUESSES = 3;
+const NUMBER_OF_GUESSES = 6;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
 
-// 8 characters total
+// 8 characters
 let rightGuessString = String(Math.floor(Math.random() * 2));
 for (let i = 0; i < 7; i++) {
     rightGuessString += String(Math.floor(Math.random() * 2));
@@ -42,7 +42,7 @@ document.addEventListener("keyup", (e) => {
         toastr.error("Not an accepted input. Please enter 0 or 1")
         return
     }
- 
+
 })
 
 document.getElementById("keyboard-cont").addEventListener("click", (e) => {
