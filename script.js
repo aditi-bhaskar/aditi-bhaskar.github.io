@@ -36,7 +36,7 @@ document.addEventListener("keyup", (e) => {
 
     // let found = pressedKey.match(/[a-z]/gi)
 
-    toastr.success("entered char: " + pressedKey)
+    toastr.success("entered char, now inserting: " + pressedKey)
 
     // if (pressedKey === 0) {
     //     toastr.success("found the char; 0")
@@ -47,7 +47,6 @@ document.addEventListener("keyup", (e) => {
     //     // let found = true
     // }
 
-    toastr.success("inserting character: " + pressedKey)
     insertLetter(pressedKey)
 
     // if (!found) { //|| found.length > 1
