@@ -24,12 +24,12 @@ document.addEventListener("keyup", (e) => {
     }
 
     let pressedKey = String(e.key)
-    if (pressedKey === "Backspace" && nextLetter !== 0) {
+    if (pressedKey == "Backspace" && nextLetter !== 0) {
         deleteLetter()
         return
     }
 
-    if (pressedKey === "Enter") {
+    if (pressedKey == "Enter") {
         checkGuess()
         return
     }
@@ -38,12 +38,12 @@ document.addEventListener("keyup", (e) => {
 
     toastr.success("entered char: " + pressedKey)
 
-    if (pressedKey === 0 || pressedKey === 1) {
+    if (pressedKey == 0 || pressedKey == 1) {
         toastr.success("found the char; either 0 or 1")
         found = true
     }
 
-    if (!found || found.length > 1) {
+    if (!found) { //|| found.length > 1
         return
     } else {
         if (pressedKey === 0) {
