@@ -4,7 +4,7 @@ let currentGuess = [];
 let nextLetter = 0;
 
 // old colors: green, seagreen
-const correctColor = 'dark seagreen'
+const correctColor = 'darkseagreen'
 // old colors: firebrick, yellow
 const semiCorrectColor = 'lightcoral'
 const incorrectColor = 'grey'
