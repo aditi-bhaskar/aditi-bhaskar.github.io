@@ -42,11 +42,11 @@ document.addEventListener("keyup", (e) => {
 
     if (pressedKey == 0) {
         toastr.success("found the char; 0")
-        found = true
+        // found = true
     }
     else if (pressedKey == 1) {
         toastr.success("found the char; 0")
-        found = true
+        // found = true
     }
 
     if (!found) { //|| found.length > 1
