@@ -36,15 +36,20 @@ document.addEventListener("keyup", (e) => {
 
     // let found = pressedKey.match(/[a-z]/gi)
 
-    // let found = pressedKey.match
-    if (pressedKey != 0) {
-        toastr.error("pressedKey != 0")
+    if (pressedKey === 0 || pressedKey === 1) {
+        found = true
     }
 
     if (!found || found.length > 1) {
         return
     } else {
-        insertLetter(pressedKey)
+        if (pressedKey === 0) {
+            strPressedKey = "0"
+        }
+        else if (pressedKey === 1) {
+            strPressedKey = "1"
+        }
+        insertLetter(strPressedKey)
     }
 })
 
@@ -83,12 +88,12 @@ function initBoard() {
 }
 
 function insertLetter (pressedKey) {
-    if (nextLetter === 8) {
+    if (nextLetter >= 8) {
         return
     }
     pressedKey = pressedKey.toLowerCase()
 
-    let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
+    let row = document.getElementsByClassName("letter-row")[NUMBER_OF_GUESSES - guessesRemaining]
     let box = row.children[nextLetter]
     animateCSS(box, "pulse")
     box.textContent = pressedKey
@@ -98,7 +103,7 @@ function insertLetter (pressedKey) {
 }
 
 function deleteLetter () {
-    let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
+    let row = document.getElementsByClassName("letter-row")[NUMBER_OF_GUESSES - guessesRemaining]
     let box = row.children[nextLetter - 1]
     box.textContent = ""
     box.classList.remove("filled-box")
@@ -107,7 +112,7 @@ function deleteLetter () {
 }
 
 function checkGuess () {
-    let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
+    let row = document.getElementsByClassName("letter-row")[NUMBER_OF_GUESSES - guessesRemaining]
     let guessString = ''
     let rightGuess = Array.from(rightGuessString)
 
