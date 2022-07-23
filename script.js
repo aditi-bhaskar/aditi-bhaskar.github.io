@@ -8,7 +8,7 @@ let nextLetter = 0;
 
 let rightGuessString ;
 for (let i = 0; i < 8; i++) {
-    rightGuessString += StringMath.floor(Math.random() * 2);
+    rightGuessString += String(Math.floor(Math.random() * 2));
 }
 
 // let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)]
