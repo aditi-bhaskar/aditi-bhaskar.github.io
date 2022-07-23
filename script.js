@@ -34,10 +34,13 @@ document.addEventListener("keyup", (e) => {
         return
     }
 
-    // let found = pressedKey.match(/[0-1]/gi)
-    let found = pressedKey.match(/[a-z]/gi)
+    // let found = pressedKey.match(/[a-z]/gi)
 
-    // let found = pressedKey
+    // let found = pressedKey.match
+    if (pressedKey === "0" | pressedKey === "1") {
+        let found = true
+    }
+
     if (!found || found.length > 1) {
         return
     } else {
