@@ -5,13 +5,11 @@ let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
 
-
-let rightGuessString ;
-for (let i = 0; i < 8; i++) {
+// 8 characters total
+let rightGuessString = String(Math.floor(Math.random() * 2));
+for (let i = 0; i < 7; i++) {
     rightGuessString += String(Math.floor(Math.random() * 2));
 }
-
-// let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)]
 
 console.log(rightGuessString)
 
@@ -34,17 +32,6 @@ document.addEventListener("keyup", (e) => {
         return
     }
 
-    // let found = pressedKey.match(/[a-z]/gi)
-
-    // if (pressedKey === 0) {
-    //     toastr.success("found the char; 0")
-    //     // let found = true
-    // }
-    // else if (pressedKey === 1) {
-    //     toastr.success("found the char; 0")
-    //     // let found = true
-    // }
-
     if (pressedKey.toString() == 0 || pressedKey.toString() == 1) {
         insertLetter(pressedKey)
         // toastr.success("thanks for entering 0 or 1")
@@ -56,11 +43,6 @@ document.addEventListener("keyup", (e) => {
         return
     }
  
-    // if (!found) { //|| found.length > 1
-    //     return
-    // } else {
-    //     insertLetter(strPressedKey)
-    // }
 })
 
 document.getElementById("keyboard-cont").addEventListener("click", (e) => {
