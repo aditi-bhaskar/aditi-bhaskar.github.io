@@ -59,6 +59,8 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
 //FUNCTIONS//
 
 function initBoard() {
+    toastr.error("initializing board")
+
     let board = document.getElementById("game-board");
 
     for (let i = 0; i < NUMBER_OF_GUESSES; i++) {
