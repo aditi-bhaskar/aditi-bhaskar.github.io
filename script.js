@@ -1,6 +1,6 @@
 import { WORDS } from "./words.js";
 
-const NUMBER_OF_GUESSES = 6;
+const NUMBER_OF_GUESSES = 3;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
@@ -46,6 +46,10 @@ document.addEventListener("keyup", (e) => {
     //     toastr.success("found the char; 0")
     //     // let found = true
     // }
+
+    if (pressedKey.toString() != 0 || pressedKey.toString() != 1) {
+        toastr.error("Not an accepted input. please enter 0 or 1")
+    }
 
     insertLetter(pressedKey)
 
@@ -97,8 +101,6 @@ function insertLetter (pressedKey) {
     }
     pressedKey = pressedKey.toString() 
     // pressedKey = pressedKey.toLowerCase()
-
-    toastr.error("converted: " + pressedKey)
 
     let row = document.getElementsByClassName("letter-row")[NUMBER_OF_GUESSES - guessesRemaining]
     let box = row.children[nextLetter]
