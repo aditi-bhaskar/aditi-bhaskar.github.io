@@ -50,10 +50,10 @@ document.addEventListener("keyup", (e) => {
     if (!found) { //|| found.length > 1
         return
     } else {
-        if (pressedKey === 0) {
+        if (pressedKey == 0) {
             strPressedKey = "0"
         }
-        else if (pressedKey === 1) {
+        else if (pressedKey == 1) {
             strPressedKey = "1"
         }
         insertLetter(strPressedKey)
