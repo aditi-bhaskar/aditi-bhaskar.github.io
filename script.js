@@ -52,7 +52,7 @@ document.addEventListener("keyup", (e) => {
     if (!found) { //|| found.length > 1
         return
     } else {
-        
+
         // if (pressedKey == 0) {
         //     strPressedKey = "0"
         // }
@@ -99,9 +99,13 @@ function initBoard() {
 
 function insertLetter (pressedKey) {
     if (nextLetter == 8) {
+        toastr.error("already full with 8 letters")
         return
     }
-    pressedKey = pressedKey.toLowerCase()
+    pressedKey = pressedKey.toString() 
+    // pressedKey = pressedKey.toLowerCase()
+
+    toastr.error("converted: " + pressedKey)
 
     let row = document.getElementsByClassName("letter-row")[NUMBER_OF_GUESSES - guessesRemaining]
     let box = row.children[nextLetter]
