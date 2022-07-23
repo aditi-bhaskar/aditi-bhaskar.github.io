@@ -47,7 +47,7 @@ document.addEventListener("keyup", (e) => {
     //     // let found = true
     // }
 
-    if (pressedKey.toString() != 0 || pressedKey.toString() != 1) {
+    if (!(pressedKey.toString() == 0 || pressedKey.toString() == 1)) {
         toastr.error("Not an accepted input. please enter 0 or 1")
     }
  
