@@ -136,11 +136,12 @@ function checkGuess () {
             // if letter index and right guess index are the same
             // letter is in the right position 
             if (currentGuess[i] === rightGuess[i]) {
-                // shade green 
-                letterColor = 'seagreen'
+                // old colord: green, seagreen
+                letterColor = 'dark seagreen'
             } else {
-                // shade box orange
-                letterColor = 'firebrick'
+                // old colors: firebrick, yellow
+                letterColor = 'lightcoral'
+                
             }
 
             rightGuess[letterPosition] = "#"
