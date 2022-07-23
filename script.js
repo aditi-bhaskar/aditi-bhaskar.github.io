@@ -40,24 +40,25 @@ document.addEventListener("keyup", (e) => {
 
     let found = true  //hardcode true for now
 
-    if (pressedKey === 0) {
-        toastr.success("found the char; 0")
-        // found = true
-    }
-    else if (pressedKey === 1) {
-        toastr.success("found the char; 0")
-        // found = true
-    }
+    // if (pressedKey === 0) {
+    //     toastr.success("found the char; 0")
+    //     // found = true
+    // }
+    // else if (pressedKey === 1) {
+    //     toastr.success("found the char; 0")
+    //     // found = true
+    // }
 
     if (!found) { //|| found.length > 1
         return
     } else {
-        if (pressedKey == 0) {
-            strPressedKey = "0"
-        }
-        else if (pressedKey == 1) {
-            strPressedKey = "1"
-        }
+        
+        // if (pressedKey == 0) {
+        //     strPressedKey = "0"
+        // }
+        // else if (pressedKey == 1) {
+        //     strPressedKey = "1"
+        // }
         insertLetter(strPressedKey)
     }
 })
