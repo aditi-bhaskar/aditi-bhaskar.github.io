@@ -176,7 +176,7 @@ function checkGuess () {
         } else if (guessesRemaining == 1) {
             toastr.success("Phew!")
         }
-        toastr.success("You guessed right! Game over!")
+        // toastr.success("You guessed right! Game over!")
         
         guessesRemaining = 0
         return
@@ -186,8 +186,10 @@ function checkGuess () {
         nextLetter = 0;
 
         if (guessesRemaining === 0) {
-            toastr.error("You've run out of guesses! Game over!")
-            toastr.info(`The correct  byte was: "${rightGuessString}"`)
+            toastr.info(
+                "You've run out of guesses!" + 
+                `The correct byte was: "${rightGuessString}"`
+            )
         }
     }
 }
