@@ -11,10 +11,8 @@ const incorrectColor = 'lightgrey'
 
 // string characters together for answer
 let rightGuessString = (Math.floor(Math.random() * 2)).toString();
-if (INPUT_LEN != 1) {
-    for (let i = 0; i < INPUT_LEN-1; i++) {
-        rightGuessString += (Math.floor(Math.random() * 2)).toString();
-    }
+for (let i = 0; i < INPUT_LEN-1; i++) {
+    rightGuessString += (Math.floor(Math.random() * 2)).toString();
 }
 
 console.log(rightGuessString)
