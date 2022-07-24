@@ -1,4 +1,4 @@
-const NUMBER_OF_GUESSES = 3;
+const NUMBER_OF_GUESSES = 4;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
@@ -167,7 +167,20 @@ function checkGuess () {
     }
 
     if (guessString === rightGuessString) {
+        if (guessesRemaining == 4) {
+            toastr.success("Insane!")
+        } else if (guessesRemaining == 3) {
+            toastr.success("Impressive!")
+        } else if (guessesRemaining == 2) {
+            toastr.success("Great Job!")
+        } else if (guessesRemaining == 1) {
+            toastr.success("Phew!")
+        } else if (guessesRemaining == 0) {
+            toastr.success("Super-Phew!")
+        }
+
         toastr.success("You guessed right! Game over!")
+        
         guessesRemaining = 0
         return
     } else {
