@@ -1,13 +1,22 @@
-const INPUT_LEN = $('#bittlejs').attr('data');
-toastr.error("val accepted from html data: " + INPUT_LEN)
+var mode = $('#bittlesuite').attr('data');
+var input_len = 1 ;
+var no_guesses = 1 ;
+if (mode == "bittle") {
+    input_len = 1 ;
+    no_guesses = 3 ;
+} else if (mode == "nibble") {
+    input_len = 4 ;
+    no_guesses = 3 ;
+} else if (mode == "bytle") {
+    input_len = 8 ;
+    no_guesses = 4 ;
+} 
 
-var nog = 4 // if nibble or byte
-if (INPUT_LEN == 1) { // if bit
-    nog = 3
-}
-const NUMBER_OF_GUESSES = nog ;
+const INPUT_LEN = input_len
+const NUMBER_OF_GUESSES = no_guesses ;
 
-toastr.error("val accepted from html data nog: " + NUMBER_OF_GUESSES)
+toastr.info("val accepted from html data: " + INPUT_LEN + " " + NUMBER_OF_GUESSES)
+
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
@@ -209,20 +218,3 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
 });
-
-// var MYLIBRARY = MYLIBRARY || (function(){
-//     var input_length // private
-//     var num_guesses
-
-//     return {
-//         init : function(il, ng) {
-//             input_length = il;
-//             num_guesses = ng
-//         }
-//     };
-// }());
-
-// function set(input_length, num_guess) {
-//     INPUT_LEN = input_length ;
-//     NUMBER_OF_GUESSES = num_guess ;
-// }
