@@ -9,7 +9,7 @@ const correctColor = 'darkseagreen'
 const semiCorrectColor = 'lightcoral'
 const incorrectColor = 'lightgrey'
 
-// 8 characters
+// string characters together for answer
 let rightGuessString = (Math.floor(Math.random() * 2)).toString();
 for (let i = 0; i < INPUT_LEN-1; i++) {
     rightGuessString += (Math.floor(Math.random() * 2)).toString();
@@ -38,7 +38,6 @@ document.addEventListener("keyup", (e) => {
 
     if (pressedKey.toString() == 0 || pressedKey.toString() == 1) {
         insertLetter(pressedKey)
-        // toastr.success("thanks for entering 0 or 1")
     } else {
         toastr.error("Not an accepted input. Please enter 0 or 1")
         return
@@ -88,7 +87,6 @@ function insertLetter (pressedKey) {
         return
     }
     pressedKey = pressedKey.toString() 
-    // pressedKey = pressedKey.toLowerCase()
 
     let row = document.getElementsByClassName("letter-row")[NUMBER_OF_GUESSES - guessesRemaining]
     let box = row.children[nextLetter]
@@ -175,7 +173,6 @@ function checkGuess () {
         } else if (guessesRemaining == 1) {
             toastr.success("Phew!")
         }
-        // toastr.success("You guessed right! Game over!")
         
         guessesRemaining = 0
         return
@@ -232,13 +229,13 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 });
 
 var MYLIBRARY = MYLIBRARY || (function(){
-    var input_length // private
-    var num_guesses
+    var input_length ; // private
+    var num_guesses; 
 
     return {
         init : function(il, ng) {
             input_length = il;
-            num_guesses = ng
+            num_guesses = ng; 
         }
     };
 }());
