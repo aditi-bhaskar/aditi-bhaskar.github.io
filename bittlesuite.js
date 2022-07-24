@@ -152,6 +152,7 @@ function checkGuess () {
         //MY V3
         if (currentGuess[i] == rightGuess[i]) {
             letterColor = correctColor
+            toastr.info("correctcolor!")
         } else {
             let flag1 = false ;
             for (let m = i+1; m < INPUT_LEN; m++) {
