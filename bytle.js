@@ -175,10 +175,7 @@ function checkGuess () {
             toastr.success("Great Job!")
         } else if (guessesRemaining == 1) {
             toastr.success("Phew!")
-        } else if (guessesRemaining == 0) {
-            toastr.success("Super-Phew!")
         }
-
         toastr.success("You guessed right! Game over!")
         
         guessesRemaining = 0
