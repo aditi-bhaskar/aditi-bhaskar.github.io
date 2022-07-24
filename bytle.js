@@ -15,7 +15,7 @@ if (mode == 1) {
 const INPUT_LEN = input_len
 const NUMBER_OF_GUESSES = no_guesses ;
 
-toastr.info("val accepted from html data: " + INPUT_LEN + " " + NUMBER_OF_GUESSES)
+toastr.info("val accepted from bytle html data: " + INPUT_LEN + " " + NUMBER_OF_GUESSES)
 
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
