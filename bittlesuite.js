@@ -143,6 +143,22 @@ function checkGuess () {
         
         let letterPosition = rightGuess.indexOf(currentGuess[i])
 
+        //MY V2
+        if (currentGuess[i] == rightGuess[i]) {
+            letterColor = correctColor
+            // rightGuess[letterPosition] = "#"
+        } 
+        else {
+            for (let j = i; j < INPUT_LEN; j++) {
+                if (currentGuess[i] == rightGuess[j]) {
+                    letterColor = semiCorrectColor
+                    // rightGuess[letterPosition] = "#"
+                }
+            }
+            letterColor = incorrectColor 
+        }
+
+        //MY V1
         // // todo: edit my logic
         // if (currentGuess[i] == rightGuess[i]) {
         //     letterColor = correctColor
@@ -154,20 +170,22 @@ function checkGuess () {
         //     rightGuess[letterPosition] = "#"
         // }
 
-        // is letter in the correct guess
-        if (letterPosition === -1) {
-            letterColor = incorrectColor
-        } else {
-            // now, letter is definitely in word
-            // if letter index and right guess index are the same
-            // letter is in the right position 
-            if (currentGuess[i] == rightGuess[i]) {
-                letterColor = correctColor
-            } else {
-                letterColor = semiCorrectColor
-            }
-            rightGuess[letterPosition] = "#"
-        }
+
+        //GIVEN VERSION
+        // // is letter in the correct guess
+        // if (letterPosition === -1) {
+        //     letterColor = incorrectColor
+        // } else {
+        //     // now, letter is definitely in word
+        //     // if letter index and right guess index are the same
+        //     // letter is in the right position 
+        //     if (currentGuess[i] == rightGuess[i]) {
+        //         letterColor = correctColor
+        //     } else {
+        //         letterColor = semiCorrectColor
+        //     }
+        //     rightGuess[letterPosition] = "#"
+        // }
 
         let delay = 250 * i
         setTimeout(()=> {
