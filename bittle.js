@@ -202,6 +202,11 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
 });
 
+function set(input_length, num_guess) {
+    INPUT_LEN = input_length ;
+    NUMBER_OF_GUESSES = num_guess ;
+}
+
 // var MYLIBRARY = MYLIBRARY || (function(){
 //     var input_length // private
 //     var num_guesses
