@@ -306,7 +306,6 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
         //     rightGuess[letterPosition] = "#"
         // }
 
-
         //GIVEN VERSION - ? like my v1
         // // is letter in the correct guess
         // if (letterPosition === -1) {
