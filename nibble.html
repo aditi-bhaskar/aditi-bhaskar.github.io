@@ -19,11 +19,44 @@
             &bull;
             <a href="nibble">Play Again</a>
         </nav>
-
+        
         <h1> Bittle Suite </h1>
         <h2> Nibble </h2>
+    
+        <div id="game-board" style="color:#F2F5FC"></div>
+    
+        <div id="keyboard-cont" >
+        <div class="first-row">
+            <button class="keyboard-button">Del</button>
+            <button class="keyboard-button">0</button>
+            <button class="keyboard-button">1</button>
+            <button class="keyboard-button">Enter</button>
+        </div>
+        </div>
 
-        <p>Nibble coming soon!</p>
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script src="bittlesuite.js" type="module" data=4
+        href="#" id="bittlesuite">
+        </script>
+
+        <!--  
+        <script src="bytle.js" type="module">
+            MYLIBRARY.init(8, 4); // to pass in vars
+        </script>
+        -->
+
+        <br>
+        <p style="color:#F2F5FC">How to play: 4 bits make a nibble! Enter 0's and 1's. <br>
+        Hint: square colorings may obfuscate! <br>
+        <a style="color:darkseagreen">green: correct bit, correct placement</a><br>
+        <a style="color:lightcoral">pink: correct bit, incorrect placement </a><br>
+        <a style="color:lightgrey">grey: bit not in nibble </a><br>
+        </p>
     </body>
 </html>
 
