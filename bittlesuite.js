@@ -136,7 +136,7 @@ function checkGuess () {
         return
     }
 
-    const box_clr_fill = [INPUT_LEN] ;
+    let box_clr_fill = [];
     for (let a = 0; a < INPUT_LEN; a++) {
         box_clr_fill[a] = ""
         if (currentGuess[a] == rightGuess[a]) {
@@ -150,7 +150,7 @@ function checkGuess () {
         let letter = currentGuess[i]
         
         //MY V3
-        toastr.info("currguess: " + currentGuess[i] + " , rightguess: " + rightGuess[i])
+        // toastr.info("currguess: " + currentGuess[i] + " , rightguess: " + rightGuess[i])
 
         if (currentGuess[i] == rightGuess[i]) {
             letterColor = correctColor
