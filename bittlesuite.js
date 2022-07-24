@@ -9,7 +9,7 @@ if (mode == 1) {
     no_guesses = 3 ;
 } else if (mode == 8) {
     input_len = 8 ;
-    no_guesses = 4 ;
+    no_guesses = 3 ;
 } 
 
 const INPUT_LEN = input_len
@@ -149,12 +149,11 @@ function checkGuess () {
         let box = row.children[i]
         let letter = currentGuess[i]
         
-        //MY V3
+        //MY V4
         // toastr.info("currguess: " + currentGuess[i] + " , rightguess: " + rightGuess[i])
 
         if (currentGuess[i] == rightGuess[i]) {
             letterColor = correctColor
-            toastr.info("correctcolor!")
         } else {
             let flag1 = false ;
             for (let m = i+1; m < INPUT_LEN; m++) {
@@ -163,10 +162,8 @@ function checkGuess () {
                 }
             }
             if(flag1) {
-                toastr.info("semicorrectcolor!")
                 letterColor = semiCorrectColor
             } else {
-                toastr.info("incorrectcolor!")
                 letterColor = incorrectColor 
             }
         }
@@ -249,7 +246,35 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
 //////////////////////////////////////old logic in "checkGuess()" for loop
 
-        //MY V2
+        //MY V3 -- accurate feedback
+        // if (currentGuess[i] == rightGuess[i]) {
+        //     letterColor = correctColor
+        //     toastr.info("correctcolor!")
+        // } else {
+        //     let flag1 = false ;
+        //     for (let m = i+1; m < INPUT_LEN; m++) {
+        //         if (currentGuess[i] == rightGuess[m] && box_clr_fill[m] == "") {
+        //             flag1 = true ;
+        //         }
+        //     }
+        //     if(flag1) {
+        //         toastr.info("semicorrectcolor!")
+        //         letterColor = semiCorrectColor
+        //     } else {
+        //         toastr.info("incorrectcolor!")
+        //         letterColor = incorrectColor 
+        //     }
+        // }
+        // let delay = 250 * i
+        // setTimeout(()=> {
+        //     //flip box
+        //     animateCSS(box, 'flipInX')
+        //     //shade box
+        //     box.style.backgroundColor = letterColor
+        //     shadeKeyBoard(letter, letterColor)
+        // }, delay)
+
+        //MY V2 - only grey and green
         // if (currentGuess[i] == rightGuess[i]) {
         //     letterColor = correctColor
         // } 
@@ -269,7 +294,7 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
         //     }
         // }
 
-        //MY V1
+        //MY V1 - inaccurate feedback; fun to play
         // // todo: edit my logic
         // if (currentGuess[i] == rightGuess[i]) {
         //     letterColor = correctColor
@@ -282,7 +307,7 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
         // }
 
 
-        //GIVEN VERSION
+        //GIVEN VERSION - ? like my v1
         // // is letter in the correct guess
         // if (letterPosition === -1) {
         //     letterColor = incorrectColor
