@@ -14,7 +14,7 @@ const incorrectColor = 'lightgrey'
 
 // 8 characters
 let rightGuessString = (Math.floor(Math.random() * 2)).toString();
-for (let i = 0; i < 7; i++) {
+for (let i = 0; i < INPUT_LEN-1; i++) {
     rightGuessString += (Math.floor(Math.random() * 2)).toString();
 }
 
