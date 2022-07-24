@@ -1,9 +1,9 @@
-const NUMBER_OF_GUESSES = num_guesses;
+var NUMBER_OF_GUESSES //= num_guesses;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
 
-const INPUT_LEN = input_length ;
+var INPUT_LEN //= input_length ;
 
 const correctColor = 'darkseagreen'
 const incorrectColor = 'lightgrey'
@@ -211,6 +211,8 @@ var MYLIBRARY = MYLIBRARY || (function(){
         init : function(il, ng) {
             input_length = il;
             num_guesses = ng
+            INPUT_LEN = il ;
+            NUMBER_OF_GUESSES = ng ;
         }
     };
 }());
