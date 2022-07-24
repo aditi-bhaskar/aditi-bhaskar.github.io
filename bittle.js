@@ -1,13 +1,13 @@
 var mode = $('#bittlesuite').attr('data');
 var input_len = 1 ;
 var no_guesses = 1 ;
-if (mode == "bittle") {
+if (mode == 1) {
     input_len = 1 ;
     no_guesses = 3 ;
-} else if (mode == "nibble") {
+} else if (mode == 4) {
     input_len = 4 ;
     no_guesses = 3 ;
-} else if (mode == "bytle") {
+} else if (mode == 8) {
     input_len = 8 ;
     no_guesses = 4 ;
 } 
