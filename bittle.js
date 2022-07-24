@@ -1,11 +1,11 @@
-var NUMBER_OF_GUESSES = $('#bittlejs').attr('data_nog');
+const NUMBER_OF_GUESSES = 4 //$('#bittlejs').attr('data');
 toastr.error("val accepted from html data nog: " + NUMBER_OF_GUESSES)
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
 
-var INPUT_LEN = $('#bittlejs').attr('data_il');
-toastr.error("val accepted from html data il: " + INPUT_LEN)
+const INPUT_LEN = $('#bittlejs').attr('data');
+toastr.error("val accepted from html data: " + INPUT_LEN)
 
 const correctColor = 'darkseagreen'
 const incorrectColor = 'lightgrey'
