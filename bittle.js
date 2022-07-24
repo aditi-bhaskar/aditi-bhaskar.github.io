@@ -16,7 +16,7 @@ for (let i = 0; i < INPUT_LEN-1; i++) {
 
 console.log(rightGuessString)
 
-set(input_length, num_guess)
+set()
 
 initBoard()
 
