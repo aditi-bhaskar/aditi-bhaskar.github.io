@@ -1,15 +1,12 @@
-const NUMBER_OF_GUESSES = 4;
+const NUMBER_OF_GUESSES = num_guesses;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
 
-const INPUT_LEN = 8
+const INPUT_LEN = input_length;
 
-// old colors: green, seagreen
 const correctColor = 'darkseagreen'
-// old colors: yellow, firebrick
 const semiCorrectColor = 'lightcoral'
-// old colors: grey
 const incorrectColor = 'lightgrey'
 
 // 8 characters
@@ -233,3 +230,15 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
 });
+
+var MYLIBRARY = MYLIBRARY || (function(){
+    var input_length // private
+    var num_guesses
+
+    return {
+        init : function(il, ng) {
+            input_length = il;
+            num_guesses = ng
+        }
+    };
+}());
