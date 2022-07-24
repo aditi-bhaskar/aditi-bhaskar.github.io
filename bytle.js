@@ -1,9 +1,9 @@
-const NUMBER_OF_GUESSES = num_guesses;
+var INPUT_LEN;
+var NUMBER_OF_GUESSES;
+
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
-
-const INPUT_LEN = input_length;
 
 const correctColor = 'darkseagreen'
 const semiCorrectColor = 'lightcoral'
@@ -11,8 +11,10 @@ const incorrectColor = 'lightgrey'
 
 // string characters together for answer
 let rightGuessString = (Math.floor(Math.random() * 2)).toString();
-for (let i = 0; i < INPUT_LEN-1; i++) {
-    rightGuessString += (Math.floor(Math.random() * 2)).toString();
+if (INPUT_LEN != 1) {
+    for (let i = 0; i < INPUT_LEN-1; i++) {
+        rightGuessString += (Math.floor(Math.random() * 2)).toString();
+    }
 }
 
 console.log(rightGuessString)
@@ -229,13 +231,11 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 });
 
 var MYLIBRARY = MYLIBRARY || (function(){
-    var input_length ; // private
-    var num_guesses; 
 
     return {
         init : function(il, ng) {
-            input_length = il;
-            num_guesses = ng; 
+            INPUT_LEN = il;
+            NUMBER_OF_GUESSES = ng; 
         }
     };
 }());
