@@ -86,7 +86,6 @@ function insertLetter (pressedKey) {
         return
     }
     pressedKey = pressedKey.toString() 
-    // pressedKey = pressedKey.toLowerCase()
 
     let row = document.getElementsByClassName("letter-row")[NUMBER_OF_GUESSES - guessesRemaining]
     let box = row.children[nextLetter]
