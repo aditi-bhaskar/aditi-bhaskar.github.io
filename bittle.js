@@ -5,11 +5,6 @@ let nextLetter = 0;
 
 var INPUT_LEN //= 1 ; //= input_length ;
 
-function set(input_length, num_guess) {
-    INPUT_LEN = input_length ;
-    NUMBER_OF_GUESSES = num_guess ;
-}
-
 const correctColor = 'darkseagreen'
 const incorrectColor = 'lightgrey'
 
@@ -20,6 +15,8 @@ for (let i = 0; i < INPUT_LEN-1; i++) {
 }
 
 console.log(rightGuessString)
+
+set(input_length, num_guess)
 
 initBoard()
 
@@ -218,3 +215,8 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 //         }
 //     };
 // }());
+
+function set(input_length, num_guess) {
+    INPUT_LEN = input_length ;
+    NUMBER_OF_GUESSES = num_guess ;
+}
