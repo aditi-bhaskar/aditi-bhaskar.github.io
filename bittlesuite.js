@@ -139,53 +139,43 @@ function checkGuess () {
     const box_clr_fill = [INPUT_LEN] ;
     for (let a = 0; a < INPUT_LEN; a++) {
         box_clr_fill[a] = ""
+        if (currentGuess[i] == rightGuess[i]) {
+            box_clr_fill[i] = "correctColor"
+        }
     }
 
-    for (let j = 0; j < 2; j++) {
-
-        for (let i = 0; i < INPUT_LEN; i++) {
-            let letterColor = ''
-            let box = row.children[i]
-            let letter = currentGuess[i]
-            
-            //MY V3
-            if (j == 0) {
-                if (currentGuess[i] == rightGuess[i]) {
-                    letterColor = correctColor
-                    box_clr_fill[i] = "correctColor"
-                } 
-            } else if (j == 1) {
-                let flag1 = false ;
-                let flag2 = false ;
-                for (let m = i+1; m < INPUT_LEN; m++) {
-                    if (currentGuess[i] == rightGuess[m]) {
-                        flag1 = true ;
-                        for (let n = m+1; n < INPUT_LEN; n++) {
-                            if (currentGuess[i] == rightGuess[m] && box_clr_fill[n] == "") {
-                                flag2 = true ;
-                            }
-                        }
-                    }
-                }
-
-                if(flag1 && flag2) {
-                    toastr.info("semicorrectcolor!")
-                    letterColor = semiCorrectColor
-                } else {
-                    toastr.info("incorrectcolor!")
-                    letterColor = incorrectColor 
+    for (let i = 0; i < INPUT_LEN; i++) {
+        let letterColor = ''
+        let box = row.children[i]
+        let letter = currentGuess[i]
+        
+        //MY V3
+        if (currentGuess[i] == rightGuess[i]) {
+            letterColor = correctColor
+        } else {
+            let flag1 = false ;
+            for (let m = i+1; m < INPUT_LEN; m++) {
+                if (currentGuess[i] == rightGuess[m] && box_clr_fill[m] == "") {
+                    flag1 = true ;
                 }
             }
-
-            let delay = 250 * i
-            setTimeout(()=> {
-                //flip box
-                animateCSS(box, 'flipInX')
-                //shade box
-                box.style.backgroundColor = letterColor
-                shadeKeyBoard(letter, letterColor)
-            }, delay)
+            if(flag1) {
+                toastr.info("semicorrectcolor!")
+                letterColor = semiCorrectColor
+            } else {
+                toastr.info("incorrectcolor!")
+                letterColor = incorrectColor 
+            }
         }
+
+        let delay = 250 * i
+        setTimeout(()=> {
+            //flip box
+            animateCSS(box, 'flipInX')
+            //shade box
+            box.style.backgroundColor = letterColor
+            shadeKeyBoard(letter, letterColor)
+        }, delay)
     }
 
     if (guessString === rightGuessString) {
