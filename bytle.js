@@ -1,9 +1,25 @@
-const NUMBER_OF_GUESSES = 4;
+var mode = $('#bittlesuite').attr('data');
+var input_len = 1 ;
+var no_guesses = 1 ;
+if (mode == 1) {
+    input_len = 1 ;
+    no_guesses = 3 ;
+} else if (mode == 4) {
+    input_len = 4 ;
+    no_guesses = 3 ;
+} else if (mode == 8) {
+    input_len = 8 ;
+    no_guesses = 4 ;
+} 
+
+const INPUT_LEN = input_len
+const NUMBER_OF_GUESSES = no_guesses ;
+
+toastr.info("val accepted from html data: " + INPUT_LEN + " " + NUMBER_OF_GUESSES)
+
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
-
-const INPUT_LEN = 8
 
 const correctColor = 'darkseagreen'
 const semiCorrectColor = 'lightcoral'
@@ -227,13 +243,3 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
 });
-
-// var MYLIBRARY = MYLIBRARY || (function(){
-
-//     return {
-//         init : function(il, ng) {
-//             INPUT_LEN = il;
-//             NUMBER_OF_GUESSES = ng; 
-//         }
-//     };
-// }());
