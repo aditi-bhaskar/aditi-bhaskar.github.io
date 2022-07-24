@@ -1,15 +1,11 @@
-const NUMBER_OF_GUESSES = 4;
+const NUMBER_OF_GUESSES = 3;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
 
-const INPUT_LEN = 8
+const INPUT_LEN = 1
 
-// old colors: green, seagreen
 const correctColor = 'darkseagreen'
-// old colors: yellow, firebrick
-const semiCorrectColor = 'lightcoral'
-// old colors: grey
 const incorrectColor = 'lightgrey'
 
 // 8 characters
@@ -41,7 +37,6 @@ document.addEventListener("keyup", (e) => {
 
     if (pressedKey.toString() == 0 || pressedKey.toString() == 1) {
         insertLetter(pressedKey)
-        // toastr.success("thanks for entering 0 or 1")
     } else {
         toastr.error("Not an accepted input. Please enter 0 or 1")
         return
@@ -132,31 +127,12 @@ function checkGuess () {
         
         let letterPosition = rightGuess.indexOf(currentGuess[i])
 
-        // todo: edit the logic
         if (currentGuess[i] == rightGuess[i]) {
             letterColor = correctColor
             rightGuess[letterPosition] = "#"
-        } else if (letterPosition == -1) {
+        } else { //if (letterPosition == -1) {
             letterColor = incorrectColor
-        } else {
-            letterColor = semiCorrectColor
-            rightGuess[letterPosition] = "#"
-        }
-
-        // // is letter in the correct guess
-        // if (letterPosition === -1) {
-        //     letterColor = incorrectColor
-        // } else {
-        //     // now, letter is definitely in word
-        //     // if letter index and right guess index are the same
-        //     // letter is in the right position 
-        //     if (currentGuess[i] == rightGuess[i]) {
-        //         letterColor = correctColor
-        //     } else {
-        //         letterColor = semiCorrectColor
-        //     }
-        //     rightGuess[letterPosition] = "#"
-        // }
+        } 
 
         let delay = 250 * i
         setTimeout(()=> {
@@ -169,16 +145,13 @@ function checkGuess () {
     }
 
     if (guessString === rightGuessString) {
-        if (guessesRemaining == 4) {
-            toastr.success("Insane!")
-        } else if (guessesRemaining == 3) {
+        if (guessesRemaining == 3) {
             toastr.success("Impressive!")
         } else if (guessesRemaining == 2) {
             toastr.success("Great Job!")
         } else if (guessesRemaining == 1) {
             toastr.success("Phew!")
         }
-        // toastr.success("You guessed right! Game over!")
         
         guessesRemaining = 0
         return
@@ -190,7 +163,7 @@ function checkGuess () {
         if (guessesRemaining === 0) {
             toastr.info(
                 "You've run out of guesses!" + 
-                `The correct byte was: "${rightGuessString}"`
+                `The correct bit was: "${rightGuessString}"`
             )
         }
     }
@@ -203,10 +176,6 @@ function shadeKeyBoard(letter, color) {
             if (oldColor === correctColor) {
                 return
             } 
-
-            if (oldColor === semiCorrectColor && color !== correctColor) {
-                return
-            }
 
             elem.style.backgroundColor = color
             break

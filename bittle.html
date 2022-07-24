@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title style="color:black">Bittle: Bit Mode</title>
- <link rel="icon" type="image/x-icon" href="/images/a_pfp.jpg">
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bittle</title>
+    <link rel="icon" type="image/x-icon" href="/images/a_pfp.jpg">
+    <link rel="stylesheet" href="bytle.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 </head>
     <body style="background-color:#543B6E">
         <nav>
@@ -14,12 +19,32 @@
             &bull;
             <a href="bittle">Play Again</a>
         </nav>
-        <p>Bittle coming soon!</p>
+        <p>Nibble coming soon!</p>
+
+        <div id="game-board" style="color:#F2F5FC"></div>
+  
+        <div id="keyboard-cont" >
+          <div class="first-row">
+              <button class="keyboard-button">Del</button>
+              <button class="keyboard-button">0</button>
+              <button class="keyboard-button">1</button>
+              <button class="keyboard-button">Enter</button>
+          </div>
+        </div>
+    
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="bittle.js" type="module"></script>
+    <p style="color:#F2F5FC">How to play: 1 bit. Enter 0 or 1. <br>
+
     </body>
 </html>
 
 <style>
     h1 {color:rgb(255, 255, 255);}
     a {color:rgb(194, 239, 239)}
-    p {color:rgb(233, 188, 226);}
+    p {color:rgb(244, 205, 241);}
 </style>
