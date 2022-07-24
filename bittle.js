@@ -1,9 +1,11 @@
-var NUMBER_OF_GUESSES = 3 ; //= num_guesses;
+var NUMBER_OF_GUESSES = $('#bittlejs').attr('data_nog');
+toastr.error("val accepted from html data nog: " + NUMBER_OF_GUESSES)
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
 
-var INPUT_LEN = 1 ; //= input_length ;
+var INPUT_LEN = $('#bittlejs').attr('data_il');
+toastr.error("val accepted from html data il: " + INPUT_LEN)
 
 const correctColor = 'darkseagreen'
 const incorrectColor = 'lightgrey'
@@ -15,9 +17,6 @@ for (let i = 0; i < INPUT_LEN-1; i++) {
 }
 
 console.log(rightGuessString)
-
-var val = $('#bittlejs').attr('data');
-toastr.error("val accepted from html data: " + val)
 
 
 initBoard()
@@ -218,4 +217,7 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 //     };
 // }());
 
-
+// function set(input_length, num_guess) {
+//     INPUT_LEN = input_length ;
+//     NUMBER_OF_GUESSES = num_guess ;
+// }
