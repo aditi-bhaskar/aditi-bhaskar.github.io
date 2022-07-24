@@ -148,7 +148,7 @@ function checkGuess () {
             let box = row.children[i]
             let letter = currentGuess[i]
             
-            //MY V2
+            //MY V3
             if (j == 0) {
                 if (currentGuess[i] == rightGuess[i]) {
                     letterColor = correctColor
@@ -167,6 +167,7 @@ function checkGuess () {
                         }
                     }
                 }
+
                 if(flag1 && flag2) {
                     toastr.info("semicorrectcolor!")
                     letterColor = semiCorrectColor
