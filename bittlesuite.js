@@ -150,6 +150,8 @@ function checkGuess () {
         let letter = currentGuess[i]
         
         //MY V3
+        toastr.info("currguess: " + currentGuess[i] + " , rightguess: " + rightGuess[i])
+
         if (currentGuess[i] == rightGuess[i]) {
             letterColor = correctColor
             toastr.info("correctcolor!")
