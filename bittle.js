@@ -82,7 +82,7 @@ function initBoard() {
 
 function insertLetter (pressedKey) {
     if (nextLetter == INPUT_LEN) {
-        toastr.error("already full with" + INPUT_LEN + "digits")
+        toastr.error("already full with " + INPUT_LEN + " digits")
         return
     }
     pressedKey = pressedKey.toString() 
