@@ -5,11 +5,8 @@ let nextLetter = 0;
 
 const INPUT_LEN = 8
 
-// old colors: green, seagreen
 const correctColor = 'darkseagreen'
-// old colors: yellow, firebrick
 const semiCorrectColor = 'lightcoral'
-// old colors: grey
 const incorrectColor = 'lightgrey'
 
 // 8 characters
@@ -41,7 +38,6 @@ document.addEventListener("keyup", (e) => {
 
     if (pressedKey.toString() == 0 || pressedKey.toString() == 1) {
         insertLetter(pressedKey)
-        // toastr.success("thanks for entering 0 or 1")
     } else {
         toastr.error("Not an accepted input. Please enter 0 or 1")
         return
@@ -91,7 +87,6 @@ function insertLetter (pressedKey) {
         return
     }
     pressedKey = pressedKey.toString() 
-    // pressedKey = pressedKey.toLowerCase()
 
     let row = document.getElementsByClassName("letter-row")[NUMBER_OF_GUESSES - guessesRemaining]
     let box = row.children[nextLetter]
@@ -178,7 +173,6 @@ function checkGuess () {
         } else if (guessesRemaining == 1) {
             toastr.success("Phew!")
         }
-        // toastr.success("You guessed right! Game over!")
         
         guessesRemaining = 0
         return
