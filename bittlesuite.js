@@ -139,8 +139,8 @@ function checkGuess () {
     const box_clr_fill = [INPUT_LEN] ;
     for (let a = 0; a < INPUT_LEN; a++) {
         box_clr_fill[a] = ""
-        if (currentGuess[i] == rightGuess[i]) {
-            box_clr_fill[i] = "correctColor"
+        if (currentGuess[a] == rightGuess[a]) {
+            box_clr_fill[a] = "correctColor"
         }
     }
 
