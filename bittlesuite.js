@@ -136,72 +136,55 @@ function checkGuess () {
         return
     }
 
-    for (let i = 0; i < INPUT_LEN; i++) {
-        let letterColor = ''
-        let box = row.children[i]
-        let letter = currentGuess[i]
-        
-        let letterPosition = rightGuess.indexOf(currentGuess[i])
+    const box_clr_fill = [INPUT_LEN] ;
+    for (let a = 0; a < INPUT_LEN; a++) {
+        box_clr_fill[a] = ""
+    }
 
-        //MY V2
-        if (currentGuess[i] == rightGuess[i]) {
-            letterColor = correctColor
-            // rightGuess[letterPosition] = "#"
-        } 
-        else {
-            let flag = false
-            for (let j = i; j < INPUT_LEN; j++) {
-                if (currentGuess[i] == rightGuess[j]) {
-                    flag = true
+    for (let j = 0; j < 2; j++) {
+
+        for (let i = 0; i < INPUT_LEN; i++) {
+            let letterColor = ''
+            let box = row.children[i]
+            let letter = currentGuess[i]
+            
+            //MY V2
+            if (j == 0) {
+                if (currentGuess[i] == rightGuess[i]) {
+                    letterColor = correctColor
+                    box_clr_fill[i] = "correctColor"
+                } 
+            } else if (j == 1) {
+                let flag1 = false ;
+                let flag2 = false ;
+                for (let m = i+1; m < INPUT_LEN; m++) {
+                    if (currentGuess[i] == rightGuess[m]) {
+                        flag1 = true ;
+                        for (let n = m+1; n < INPUT_LEN; n++) {
+                            if (currentGuess[i] == rightGuess[m] && box_clr_fill[n] == "") {
+                                flag2 = true ;
+                            }
+                        }
+                    }
+                }
+                if(flag1 && flag2) {
+                    toastr.info("semicorrectcolor!")
+                    letterColor = semiCorrectColor
+                } else {
+                    toastr.info("incorrectcolor!")
+                    letterColor = incorrectColor 
                 }
             }
-            if(flag = true) {
-                toastr.info("semicorrectcolor!")
-                letterColor = semiCorrectColor
-                // rightGuess[letterPosition] = "#"
-            } else {
-                toastr.info("incorrectcolor!")
-                letterColor = incorrectColor 
-            }
+
+            let delay = 250 * i
+            setTimeout(()=> {
+                //flip box
+                animateCSS(box, 'flipInX')
+                //shade box
+                box.style.backgroundColor = letterColor
+                shadeKeyBoard(letter, letterColor)
+            }, delay)
         }
-
-        //MY V1
-        // // todo: edit my logic
-        // if (currentGuess[i] == rightGuess[i]) {
-        //     letterColor = correctColor
-        //     rightGuess[letterPosition] = "#"
-        // } else if (letterPosition == -1) {
-        //     letterColor = incorrectColor
-        // } else {
-        //     letterColor = semiCorrectColor
-        //     rightGuess[letterPosition] = "#"
-        // }
-
-
-        //GIVEN VERSION
-        // // is letter in the correct guess
-        // if (letterPosition === -1) {
-        //     letterColor = incorrectColor
-        // } else {
-        //     // now, letter is definitely in word
-        //     // if letter index and right guess index are the same
-        //     // letter is in the right position 
-        //     if (currentGuess[i] == rightGuess[i]) {
-        //         letterColor = correctColor
-        //     } else {
-        //         letterColor = semiCorrectColor
-        //     }
-        //     rightGuess[letterPosition] = "#"
-        // }
-
-        let delay = 250 * i
-        setTimeout(()=> {
-            //flip box
-            animateCSS(box, 'flipInX')
-            //shade box
-            box.style.backgroundColor = letterColor
-            shadeKeyBoard(letter, letterColor)
-        }, delay)
     }
 
     if (guessString === rightGuessString) {
@@ -268,3 +251,55 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
 });
+
+
+//////////////////////////////////////old logic in "checkGuess()" for loop
+
+        //MY V2
+        // if (currentGuess[i] == rightGuess[i]) {
+        //     letterColor = correctColor
+        // } 
+        // else {
+        //     let flag = false
+        //     for (let j = i; j < INPUT_LEN; j++) {
+        //         if (currentGuess[i] == rightGuess[j]) {
+        //             flag = true
+        //         }
+        //     }
+        //     if(flag = true) {
+        //         toastr.info("semicorrectcolor!")
+        //         letterColor = semiCorrectColor
+        //     } else {
+        //         toastr.info("incorrectcolor!")
+        //         letterColor = incorrectColor 
+        //     }
+        // }
+
+        //MY V1
+        // // todo: edit my logic
+        // if (currentGuess[i] == rightGuess[i]) {
+        //     letterColor = correctColor
+        //     rightGuess[letterPosition] = "#"
+        // } else if (letterPosition == -1) {
+        //     letterColor = incorrectColor
+        // } else {
+        //     letterColor = semiCorrectColor
+        //     rightGuess[letterPosition] = "#"
+        // }
+
+
+        //GIVEN VERSION
+        // // is letter in the correct guess
+        // if (letterPosition === -1) {
+        //     letterColor = incorrectColor
+        // } else {
+        //     // now, letter is definitely in word
+        //     // if letter index and right guess index are the same
+        //     // letter is in the right position 
+        //     if (currentGuess[i] == rightGuess[i]) {
+        //         letterColor = correctColor
+        //     } else {
+        //         letterColor = semiCorrectColor
+        //     }
+        //     rightGuess[letterPosition] = "#"
+        // }
