@@ -8,7 +8,7 @@ const correctColor = 'darkseagreen'
 // old colors: yellow, firebrick
 const semiCorrectColor = 'lightcoral'
 // old colors: grey
-const incorrectColor = 'lightgray'
+const incorrectColor = 'lightgrey'
 
 // 8 characters
 let rightGuessString = (Math.floor(Math.random() * 2)).toString();
@@ -85,7 +85,7 @@ function initBoard() {
 
 function insertLetter (pressedKey) {
     if (nextLetter == 8) {
-        toastr.error("already full with 8 letters")
+        toastr.error("already full with 8 digits")
         return
     }
     pressedKey = pressedKey.toString() 
