@@ -149,13 +149,18 @@ function checkGuess () {
             // rightGuess[letterPosition] = "#"
         } 
         else {
+            let flag = false
             for (let j = i; j < INPUT_LEN; j++) {
                 if (currentGuess[i] == rightGuess[j]) {
-                    letterColor = semiCorrectColor
-                    // rightGuess[letterPosition] = "#"
+                    flag = true
                 }
             }
-            letterColor = incorrectColor 
+            if(flag = true) {
+                letterColor = semiCorrectColor
+                // rightGuess[letterPosition] = "#"
+            } else {
+                letterColor = incorrectColor 
+            }
         }
 
         //MY V1
