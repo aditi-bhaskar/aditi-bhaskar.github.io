@@ -1,9 +1,14 @@
-var NUMBER_OF_GUESSES = 3 ; //= num_guesses;
+var NUMBER_OF_GUESSES //= 3 ; //= num_guesses;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
 
-var INPUT_LEN = 1 ; //= input_length ;
+var INPUT_LEN //= 1 ; //= input_length ;
+
+function set(input_length, num_guess) {
+    INPUT_LEN = input_length ;
+    NUMBER_OF_GUESSES = num_guess ;
+}
 
 const correctColor = 'darkseagreen'
 const incorrectColor = 'lightgrey'
@@ -201,11 +206,6 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
 });
-
-function set(input_length, num_guess) {
-    INPUT_LEN = input_length ;
-    NUMBER_OF_GUESSES = num_guess ;
-}
 
 // var MYLIBRARY = MYLIBRARY || (function(){
 //     var input_length // private
