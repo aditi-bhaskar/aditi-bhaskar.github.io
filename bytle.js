@@ -1,5 +1,5 @@
-var INPUT_LEN;
-var NUMBER_OF_GUESSES;
+const INPUT_LEN = 8;
+const NUMBER_OF_GUESSES = 4;
 
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
@@ -230,12 +230,12 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
 });
 
-var MYLIBRARY = MYLIBRARY || (function(){
+// var MYLIBRARY = MYLIBRARY || (function(){
 
-    return {
-        init : function(il, ng) {
-            INPUT_LEN = il;
-            NUMBER_OF_GUESSES = ng; 
-        }
-    };
-}());
+//     return {
+//         init : function(il, ng) {
+//             INPUT_LEN = il;
+//             NUMBER_OF_GUESSES = ng; 
+//         }
+//     };
+// }());
