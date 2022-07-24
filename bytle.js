@@ -233,3 +233,13 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
 });
+
+// var MYLIBRARY = MYLIBRARY || (function(){
+
+//     return {
+//         init : function(il, ng) {
+//             INPUT_LEN = il;
+//             NUMBER_OF_GUESSES = ng; 
+//         }
+//     };
+// }());
