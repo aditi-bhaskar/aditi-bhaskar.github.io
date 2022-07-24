@@ -156,9 +156,11 @@ function checkGuess () {
                 }
             }
             if(flag = true) {
+                toastr.info("semicorrectcolor!")
                 letterColor = semiCorrectColor
                 // rightGuess[letterPosition] = "#"
             } else {
+                toastr.info("incorrectcolor!")
                 letterColor = incorrectColor 
             }
         }
