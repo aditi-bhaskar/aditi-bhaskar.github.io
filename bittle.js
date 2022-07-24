@@ -1,9 +1,9 @@
-const NUMBER_OF_GUESSES = 3;
+const NUMBER_OF_GUESSES = num_guesses;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
 
-const INPUT_LEN = 1
+const INPUT_LEN = input_length ;
 
 const correctColor = 'darkseagreen'
 const incorrectColor = 'lightgrey'
@@ -202,3 +202,15 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
 });
+
+var MYLIBRARY = MYLIBRARY || (function(){
+    var input_length // private
+    var num_guesses
+
+    return {
+        init : function(il, ng) {
+            input_length = il;
+            num_guesses = ng
+        }
+    };
+}());
