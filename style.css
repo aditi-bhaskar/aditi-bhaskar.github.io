@@ -1,15 +1,15 @@
 /* Center child elements */
-/* body,
+body,
 .website-counter {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-} */
+}
 
-/* body {
+body {
   height: 100vh;
-} */
+}
 
 /* Styles for website counter container */
 .website-counter {
@@ -21,9 +21,6 @@
   font-weight: 700;
   font-size: 25px;
   margin-top: 10px;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 
 /* Styles for reset button */
