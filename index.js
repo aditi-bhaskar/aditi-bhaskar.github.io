@@ -8,6 +8,6 @@ var datetime = "Last Sync: " + currentdate.getDate() + "/"
                 + currentdate.getSeconds();
 
 
-if (currentdate.getMinutes == 0) {
+if (currentdate.getSeconds() == 0) {
   document.getElementById("game").innerHTML = datetime ;
 }
