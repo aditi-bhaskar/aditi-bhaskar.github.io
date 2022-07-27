@@ -26,6 +26,7 @@
 
         <p id="game"></p>
         <script>
+            var i = 0 ;
             var currentdate = new Date(); 
 
             var datetime = "Last Sync: " + currentdate.getDate() + "/"
@@ -39,7 +40,10 @@
 
             // addEventListener(Date)
             if (currentdate.getSeconds() == 0) {
-                document.getElementById("game").innerHTML = "0secs: " + datetime ;
+                i += 1 ;
+                document.getElementById("game").innerHTML = 
+                    "0secs: " + datetime 
+                    + " i = " + i;
             }
         </script>
 
