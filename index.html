@@ -24,9 +24,13 @@
             &#127794; Wilsonville, Oregon, USA
         </p>
 
+        <p>Thanks for visiting!</p>
+
+        <a href="https://aditi-bhaskar.github.io/42.html"><img src="images/a_pfp.jpg" alt="An image, I suppose" style="width:200px;height:200px;"></a>
+
         <p id="game"></p>
         <script>
-            var i = 0 ;
+            // var i = 0 ;
             var currentdate = new Date(); 
             var ret = "" ;
 
@@ -37,20 +41,13 @@
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
 
-            // addEventListener(Date)
-            if (currentdate.getSeconds() == 0) {
-                i += Math.floor(Math.random()*10); 
-                ret += "datetime = 0sec  " ;
-            }
-            // comment!
+            // if (currentdate.getSeconds() == 0) {
+            //     i += Math.floor(Math.random()*10); 
+            //     ret += "datetime = 0sec  " ;
+            // }
             ret += datetime + " i = " + i;
             document.getElementById("game").innerHTML = ret ;
         </script>
-
-
-        <p>Thanks for visiting!</p>
-
-        <a href="https://aditi-bhaskar.github.io/42.html"><img src="images/a_pfp.jpg" alt="An image, I suppose" style="width:200px;height:200px;"></a>
 
     </body>
 
