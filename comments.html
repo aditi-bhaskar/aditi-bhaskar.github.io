@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="UTF-8">
@@ -21,8 +21,8 @@ Code Example:
 <!DOCTYPE html>
 <html>
    <body>
-      <h3>Add a review or comment!</h3>
-      <form id="myForm">
+        <h3>Add a review or comment!</h3>
+        <form id="myForm">
             Name: <input id="userName" type="text" name="fname">
             <br><br>
             Email : <input id="userEmail" type="text" name="email">
@@ -32,29 +32,17 @@ Code Example:
             <input type="button" onclick="myFunction()" value="Submit">
         </form>
 
-        <!-- https://blog.hubspot.com/marketing/html-form-email -->
-        <form action=”mailto:11squaredis121@gmail.com”
-            method=”POST”   
-            enctype=”multipart/form-data”
-            name=”EmailForm”>
-            Name:<br>
-            <input type=”text” size=”19″ name=”ContactName”><br><br>
-            Message:<br> \
-            <textarea name=”Comment” rows=”6″ cols=”20″>
-            </textarea><br><br> 
-            <input type=”submit” value=”Submit”> 
-        </form>
-        <!-- <h5>Submitted data :</h5> -->
-        <!-- <p id="data"></p> -->
+        <h5>Submitted data :</h5>
+        <p id="data"></p>
         <script>
             function myFunction(){
-            let data = "";  let name = document.getElementById("userName").value
-            let email = document.getElementById("userEmail").value
-            let comment = document.getElementById("userComment").value
-            
-            data = "User name : "+name+"<br/>User email : "+email+ "<br/>User comment : "+comment
+                let data = "";  let name = document.getElementById("userName").value
+                let email = document.getElementById("userEmail").value
+                let comment = document.getElementById("userComment").value
+                
+                data = "User name : "+name+"<br/>User email : "+email+ "<br/>User comment : "+comment
 
-            //  document.getElementById("data").innerHTML = data  // display data to paragraph
+                document.getElementById("data").innerHTML = data  // display data to paragraph
             }
         </script>
    </body>
@@ -79,4 +67,4 @@ Code Example:
 </style>
 
 
-<!-- https://www.delftstack.com/howto/javascript/create-comment-box-in-html-and-javascript/ -->
+https://www.delftstack.com/howto/javascript/create-comment-box-in-html-and-javascript/ -->
