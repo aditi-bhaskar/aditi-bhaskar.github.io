@@ -28,6 +28,7 @@
         <script>
             var i = 0 ;
             var currentdate = new Date(); 
+            var ret = "" ;
 
             var datetime = "Last Sync: " + currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
@@ -36,15 +37,13 @@
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
 
-            document.getElementById("game").innerHTML = datetime ;
-
             // addEventListener(Date)
             if (currentdate.getSeconds() == 0) {
                 i += 1 ;
-                document.getElementById("game").innerHTML = 
-                    "0secs: " + datetime 
-                    + " i = " + i;
+                ret += "datetime = 0sec  "
             }
+            ret += datetime + " i = " + i;
+            document.getElementById("game").innerHTML = ret ;
         </script>
 
 
