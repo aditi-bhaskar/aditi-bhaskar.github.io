@@ -39,9 +39,10 @@
 
             // addEventListener(Date)
             if (currentdate.getSeconds() == 0) {
-                i = Math.floor(Math.random()*10);
+                i += Math.floor(Math.random()*10); 
                 ret += "datetime = 0sec  " ;
             }
+            // comment!
             ret += datetime + " i = " + i;
             document.getElementById("game").innerHTML = ret ;
         </script>
