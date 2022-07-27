@@ -35,10 +35,10 @@
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
 
-
-            // if (currentdate.getSeconds() == 0) {
-            document.getElementById("game").innerHTML = datetime ;
-            // }
+            // addEventListener(Date)
+            if (currentdate.getSeconds() == 0) {
+                document.getElementById("game").innerHTML = "0secs: " + datetime ;
+            }
         </script>
 
 
