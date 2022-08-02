@@ -1,2 +1,7 @@
 # Aditi's website!
-https://aditi-bhaskar.github.io/
+
+this is a website about Aditi!!
+https://aditi-bhaskar.github.io
+
+to play bittlesuite, visit:
+https://bittlesuite.github.io
