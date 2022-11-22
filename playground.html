@@ -6,12 +6,22 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Playground</title>
  <link rel="icon" type="image/x-icon" href="/images/a_pfp.jpg">
+ <script async src="https://api.countapi.xyz/hit/aditi-bhaskar.github.io/d3f500e4-28a7-4a5e-a9a7-357a56ee653e?callback=websiteVisits"></script>
 </head>
     <body style="background-color:#543B6E">
         <nav>
         <a href="index">Back to Home</a>
         </nav>
       <h4>playground! this is a test page!</h4>
+     
+     <p>This site has been visited <span id="visits"></span> times.<p>
+     
+     <script>
+     function websiteVisits(response) {
+        document.querySelector("#visits").textContent = response.value; 
+     }
+    </script>
+     
     </body>
 </html>
 
@@ -21,3 +31,5 @@
     p {color:#F2F5FC}
     a {color:rgb(215, 243, 219);}
 </style>
+
+<!-- https://medium.com/@codefoxx/how-to-count-the-number-of-visits-on-your-website-with-html-css-javascript-and-the-count-api-2f99b42b5990 -->
