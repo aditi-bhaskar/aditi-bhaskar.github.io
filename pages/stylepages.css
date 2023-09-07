@@ -1,16 +1,24 @@
 /* style for all "pages" on my website  */
     h1 {
       color:rgb(255, 255, 255);
+      text-indent: 10%;;
     }
     h3 {
       color:rgb(237, 219, 253);
+      text-indent: 10%;;
     }
     p {
       color:#F2F5FC; 
-      width: 70%;
+      width: 90%;
       margin: auto;
-      border: 1px solid red;
     }
     a {
       color:rgb(215, 243, 219);
+      text-indent: 20%;;
+    }
+    emph { /* for emphasis */
+      color:#F2F5FC; 
+      width: 70%;
+      margin: auto;
+      border: thick double #32a1ce;
     }
