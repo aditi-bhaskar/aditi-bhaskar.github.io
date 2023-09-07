@@ -1,7 +1,7 @@
 /* style for all "pages" on my website  */
     h1 {
       color:rgb(255, 255, 255);
-      text-indent: 10%;;
+      text-indent: 5%;;
     }
     h3 {
       color:rgb(237, 219, 253);
@@ -15,11 +15,14 @@
     }
     a {
       color:rgb(215, 243, 219);
+      margin: auto;
       text-indent: 20%;;
+      text-align: center;
     }
     emph { /* for emphasis */
       color:#F2F5FC; 
-      width: 70%;
+      width: 30%;
       margin: auto;
+      text-align: center;
       border: thick double #F2F5FC;
     }
