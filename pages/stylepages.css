@@ -16,7 +16,7 @@
     a {
       color:rgb(215, 243, 219);
 /*       margin: auto; */
-      text-indent: 10%;;
+      margin-left: 10%;
 /*       text-align: center; */
     }
     emph { /* for emphasis */
@@ -24,7 +24,7 @@
 /*       width: 30%;
       margin: auto;
       text-align: center; */
-      text-indent: 10%;;
+      margin-left: 10%;
       border: thick double #F2F5FC;
       line-height: 1.5;
     }
