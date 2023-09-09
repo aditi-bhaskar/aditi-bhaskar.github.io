@@ -15,14 +15,14 @@
     }
     a {
       color:rgb(215, 243, 219);
-      margin: auto;
-      text-indent: 20%;;
+/*       margin: auto; */
+/*       text-indent: 20%;; */
       text-align: center;
     }
     emph { /* for emphasis */
       color:#F2F5FC; 
-      width: 30%;
-      margin: auto;
+/*       width: 30%; */
+/*       margin: auto; */
       text-align: center;
       border: thick double #F2F5FC;
       line-height: 1.5;
