@@ -1,11 +1,11 @@
 /* style for all "pages" on my website  */
     h1 {
       color:rgb(255, 255, 255);
-      text-indent: 5%;;
+/*       text-indent: 5%; */
     }
     h3 {
       color:rgb(237, 219, 253);
-      text-indent: 5%;;
+/*       text-indent: 5%; */
     }
     p {
       color:#F2F5FC; 
@@ -15,8 +15,8 @@
     }
     a {
       color:rgb(215, 243, 219);
-/*       margin: auto; */
-      margin-left: 10%;
+      margin: auto;
+/*       margin-left: 10%; */
 /*       text-align: center; */
     }
     emph { /* for emphasis */
