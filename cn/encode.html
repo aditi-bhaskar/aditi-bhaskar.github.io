@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Checker</title>
+</head>
+<body>
+
+    <h1>English Word Checker</h1>
+
+    <form action="#" method="post" id="wordCheckForm">
+        <label for="textInput">Enter 8 Letters (Comma Separated):</label>
+        <input type="text" id="textInput" name="textInput" pattern="[A-Za-z]{8}" required>
+        <br>
+        <button type="submit" onclick="checkWords()">Check Words</button>
+    </form>
+
+    <script>
+        function readWordList(callback) {
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const wordList = xhr.responseText.split('\n').filter(word => word.trim() !== '');
+                    callback(wordList);
+                }
+            };
+            xhr.open('GET', 'wordList.txt', true);
+            xhr.send();
+        }
+
+        function checkWords() {
+            const inputText = document.getElementById('textInput').value.toUpperCase().split(',');
+
+            readWordList(function(wordList) {
+                function recursiveCheck(remaining, currentWord) {
+                    if (remaining.length === 0) {
+                        console.log("Found word:", currentWord);
+                        return;
+                    }
+
+                    const firstTwoLetters = remaining.slice(0, 2);
+                    const lastLetter = remaining.slice(-1);
+
+                    // Check each position in the word
+                    for (let j = 0; j <= currentWord.length; j++) {
+                        const newWord = currentWord.slice(0, j) + firstTwoLetters.join('') + lastLetter.join('') + currentWord.slice(j);
+
+                        // Recursive call with the remaining letters and the updated word
+                        recursiveCheck(remaining.slice(2, -1), newWord);
+                    }
+                }
+
+                for (let i = 0; i < inputText.length; i++) {
+                    recursiveCheck(inputText.slice(0, i).concat(inputText.slice(i + 1)), inputText[i]);
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
