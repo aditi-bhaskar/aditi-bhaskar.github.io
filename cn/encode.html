@@ -1,5 +1,4 @@
 <!-- written with ChatGPT 3.5 and it doesn't work yet... -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,72 +33,66 @@
         }
 
         function checkWords() {
-        console.log("Button clicked");
+            console.log("Button clicked");
+            
+            const inputText = document.getElementById('textInput').value.toUpperCase().split(',');
         
-        const inputText = document.getElementById('textInput').value.toUpperCase().split(',');
-    
-        // Check for distinct letters
-        const distinctLetters = new Set(inputText);
-        if (inputText.length !== distinctLetters.size) {
-            console.error("Please enter 8 distinct letters.");
-            return;
-        }
-    
-        // Replace 'q' with 'z' and vice versa in the input
-        const modifiedInput = inputText.map(letter => (letter === 'Q' ? 'Z' : letter === 'Z' ? 'Q' : letter));
-        
-        console.log("Modified input:", modifiedInput);
-    
-        readWordList(function (wordList) {
-            const resultContainer = document.getElementById('resultContainer');
-            resultContainer.innerHTML = ''; // Clear previous results
-    
-            console.log("Word list:", wordList);
-    
-            wordList.forEach(word => {
-                if (isValidWord(word, modifiedInput)) {
-                    console.log("Found word:", word);
-                    const resultDiv = document.createElement('div');
-                    resultDiv.textContent = "Found word: " + word;
-                    resultContainer.appendChild(resultDiv);
-                }
-            });
-        });
-}
-
-
-       function isValidWord(word, inputLetters) {
-    console.log("Checking word:", word);
-
-    const usedLetters = new Set();
-    let position = 0;
-
-    for (let i = 0; i < word.length; i++) {
-        const letter = word[i].toUpperCase();
-
-        if (position < inputLetters.length && !usedLetters.has(letter.toUpperCase())) {
-            const inputLetter = inputLetters[position].toUpperCase();
-            if (letter === inputLetter) {
-                usedLetters.add(letter);
-                position++;
-            } else {
-                console.log("Invalid letter:", letter);
-                return false;
+            // Check for distinct letters
+            const distinctLetters = new Set(inputText);
+            if (inputText.length !== distinctLetters.size) {
+                console.error("Please enter 8 distinct letters.");
+                return;
             }
-        } else {
-            console.log("Invalid letter:", letter);
-            return false;
+        
+            // Replace 'q' with 'z' and vice versa in the input
+            const modifiedInput = inputText.map(letter => (letter === 'Q' ? 'Z' : letter === 'Z' ? 'Q' : letter));
+            
+            console.log("Modified input:", modifiedInput);
+        
+            readWordList(function (wordList) {
+                const resultContainer = document.getElementById('resultContainer');
+                resultContainer.innerHTML = ''; // Clear previous results
+        
+                console.log("Word list:", wordList);
+        
+                wordList.forEach(word => {
+                    if (isValidWord(word, modifiedInput)) {
+                        console.log("Found word:", word);
+                        const resultDiv = document.createElement('div');
+                        resultDiv.textContent = "Found word: " + word;
+                        resultContainer.appendChild(resultDiv);
+                    }
+                });
+            });
         }
-    }
 
-    console.log("Word is valid");
-    return true; // Ensure all positions are validated
-}
-
-
-
-
-
+        function isValidWord(word, inputLetters) {
+            console.log("Checking word:", word);
+        
+            const usedLetters = new Set();
+            let position = 0;
+        
+            for (let i = 0; i < word.length; i++) {
+                const letter = word[i].toUpperCase();
+        
+                if (position < inputLetters.length && !usedLetters.has(letter.toUpperCase())) {
+                    const inputLetter = inputLetters[position].toUpperCase();
+                    if (letter === inputLetter) {
+                        usedLetters.add(letter);
+                        position++;
+                    } else {
+                        console.log("Invalid letter:", letter);
+                        return false;
+                    }
+                } else {
+                    console.log("Invalid letter:", letter);
+                    return false;
+                }
+            }
+        
+            console.log("Word is valid");
+            return true; // Ensure all positions are validated
+        }
     </script>
 
 </body>
