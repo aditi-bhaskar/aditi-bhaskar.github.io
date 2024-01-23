@@ -76,19 +76,19 @@
         
             for (let i = 0; i < word.length; i++) {
                 const letter = word[i];
-        
-                if (position < inputLetters.length && letter === inputLetters[position]) {
+            
+                if (position < inputLetters.length && letter.toUpperCase() === inputLetters[position].toUpperCase()) {
                     usedLetters.add(letter);
                     position++;
-                } else if (position === 0 && letter !== inputLetters[0]) {
+                } else if (i === 0 && letter.toUpperCase() !== inputLetters[0].toUpperCase()) {
                     // First position must match the first letter in the input
                     console.log("Invalid letter at the first position:", letter);
                     return false;
-                } else if (position === 1 && letter !== inputLetters[1]) {
+                } else if (i === 1 && letter.toUpperCase() !== inputLetters[1].toUpperCase()) {
                     // Second position must match the second letter in the input
                     console.log("Invalid letter at the second position:", letter);
                     return false;
-                } else if (position === inputLetters.length - 1 && letter !== inputLetters[inputLetters.length - 1]) {
+                } else if (i === inputLetters.length - 1 && letter.toUpperCase() !== inputLetters[inputLetters.length - 1].toUpperCase()) {
                     // n-1 position must match the last letter in the input
                     console.log("Invalid letter at the n-1 position:", letter);
                     return false;
@@ -97,6 +97,7 @@
                     return false;
                 }
             }
+
         
             console.log("Word is valid");
             return true; // Ensure all positions are validated
