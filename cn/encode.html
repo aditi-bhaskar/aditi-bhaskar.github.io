@@ -80,16 +80,28 @@
                 if (position < inputLetters.length && letter === inputLetters[position]) {
                     usedLetters.add(letter);
                     position++;
-                } else if (usedLetters.has(letter)) {
-                    // Letter has already been used, which is not allowed
+                } else if (position === 0 && letter !== inputLetters[0]) {
+                    // First position must match the first letter in the input
+                    console.log("Invalid letter at the first position:", letter);
+                    return false;
+                } else if (position === 1 && letter !== inputLetters[1]) {
+                    // Second position must match the second letter in the input
+                    console.log("Invalid letter at the second position:", letter);
+                    return false;
+                } else if (position === inputLetters.length - 1 && letter !== inputLetters[inputLetters.length - 1]) {
+                    // n-1 position must match the last letter in the input
+                    console.log("Invalid letter at the n-1 position:", letter);
+                    return false;
+                } else {
                     console.log("Invalid letter:", letter);
                     return false;
                 }
             }
         
-            // console.log("Word is valid");
-            return position === inputLetters.length;
+            console.log("Word is valid");
+            return true; // Ensure all positions are validated
         }
+
 
 
     </script>
