@@ -1,3 +1,5 @@
+<!-- written with ChatGPT 3.5 and it doesn't work yet... -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +12,7 @@
     <h1>English Word Checker</h1>
 
     <form action="#" method="get" id="wordCheckForm">
-        <label for="textInput">Enter 8 Letters:</label>
+        <label for="textInput">Enter 8 Distinct Letters:</label>
         <input type="text" id="textInput" name="textInput" pattern="[A-Za-z]{8}|[QZqz],[A-Za-z]{7}|[A-Za-z],[QZqz],[A-Za-z]{6}|[A-Za-z]{2},[QZqz],[A-Za-z]{5}|[A-Za-z]{3},[QZqz],[A-Za-z]{4}|[A-Za-z]{4},[QZqz],[A-Za-z]{3}|[A-Za-z]{5},[QZqz],[A-Za-z]{2}|[A-Za-z]{6},[QZqz],[A-Za-z]|[A-Za-z]{7},[QZqz]" required>
         <br>
         <button type="button" onclick="checkWords()">Check Words</button>
@@ -25,12 +27,19 @@
                     callback(wordList);
                 }
             };
-            xhr.open('GET', 'words.txt', true);
+            xhr.open('GET', 'wordList.txt', true);
             xhr.send();
         }
 
         function checkWords() {
             const inputText = document.getElementById('textInput').value.toUpperCase().split(',');
+
+            // Check for distinct letters
+            const distinctLetters = new Set(inputText);
+            if (inputText.length !== distinctLetters.size) {
+                console.error("Please enter 8 distinct letters.");
+                return;
+            }
 
             // Replace 'q' with 'z' and vice versa in the input
             const modifiedInput = inputText.map(letter => (letter === 'Q' ? 'Z' : letter === 'Z' ? 'Q' : letter));
@@ -73,5 +82,3 @@
 
 </body>
 </html>
-
-<!-- written with ChatGPT 3.5 and it doesn't work yet... -->
