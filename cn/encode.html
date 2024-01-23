@@ -1,5 +1,4 @@
 <!-- written with ChatGPT 3.5 and it doesn't work yet... -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +16,8 @@
         <br>
         <button type="button" onclick="checkWords()">Check Words</button>
     </form>
+
+    <div id="resultContainer"></div>
 
     <script>
         function readWordList(callback) {
@@ -47,9 +48,14 @@
             const queryString = modifiedInput.map(letter => encodeURIComponent(letter)).join(',');
 
             readWordList(function (wordList) {
+                const resultContainer = document.getElementById('resultContainer');
+                resultContainer.innerHTML = ''; // Clear previous results
+
                 function recursiveCheck(remaining, currentWord) {
                     if (remaining.length === 0) {
-                        console.log("Found word:", currentWord);
+                        const resultDiv = document.createElement('div');
+                        resultDiv.textContent = "Found word: " + currentWord;
+                        resultContainer.appendChild(resultDiv);
                         return;
                     }
 
