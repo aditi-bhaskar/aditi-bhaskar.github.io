@@ -53,6 +53,7 @@
 
                 function recursiveCheck(remaining, currentWord) {
                     if (remaining.length === 0) {
+                        console.log("Found word:", currentWord);
                         const resultDiv = document.createElement('div');
                         resultDiv.textContent = "Found word: " + currentWord;
                         resultContainer.appendChild(resultDiv);
@@ -77,7 +78,7 @@
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         const wordList = xhr.responseText.split('\n').filter(word => word.trim() !== '');
-                        recursiveCheck(modifiedInput.slice(0, i).concat(modifiedInput.slice(i + 1)), modifiedInput[i]);
+                        recursiveCheck(modifiedInput, ''); // Start with an empty word
                     }
                 };
                 xhr.open('GET', url, true);
