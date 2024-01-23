@@ -33,9 +33,6 @@
             xhr.send();
         }
 
-
-
-        
         function checkWords() {
         console.log("Button clicked");
         
@@ -71,23 +68,28 @@
 }
 
 
-        function isValidWord(word, inputLetters) {
+       function isValidWord(word, inputLetters) {
+            console.log("Checking word:", word);
+            
             const usedLetters = new Set();
             let position = 0;
-
+        
             for (let i = 0; i < word.length; i++) {
                 const letter = word[i];
-
+        
                 if (position < inputLetters.length && letter === inputLetters[position]) {
                     usedLetters.add(letter);
                     position++;
                 } else if (!usedLetters.has(letter)) {
+                    console.log("Invalid letter:", letter);
                     return false;
                 }
             }
-
+        
+            console.log("Word is valid");
             return position === inputLetters.length;
         }
+
     </script>
 
 </body>
