@@ -70,7 +70,7 @@
 
        function isValidWord(word, inputLetters) {
             console.log("Checking word:", word);
-            
+        
             const usedLetters = new Set();
             let position = 0;
         
@@ -80,7 +80,8 @@
                 if (position < inputLetters.length && letter === inputLetters[position]) {
                     usedLetters.add(letter);
                     position++;
-                } else if (!usedLetters.has(letter)) {
+                } else if (usedLetters.has(letter)) {
+                    // Letter has already been used, which is not allowed
                     console.log("Invalid letter:", letter);
                     return false;
                 }
@@ -89,6 +90,7 @@
             console.log("Word is valid");
             return position === inputLetters.length;
         }
+
 
     </script>
 
