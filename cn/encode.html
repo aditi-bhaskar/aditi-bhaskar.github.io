@@ -69,26 +69,26 @@
 
 
        function isValidWord(word, inputLetters) {
-    console.log("Checking word:", word);
-
-    const usedLetters = new Set();
-    let position = 0;
-
-    for (let i = 0; i < word.length; i++) {
-        const letter = word[i].toUpperCase();
-
-        if (position < inputLetters.length && letter === inputLetters[position].toUpperCase() && !usedLetters.has(letter)) {
-            usedLetters.add(letter);
-            position++;
-        } else {
-            console.log("Invalid letter:", letter);
-            return false;
+            console.log("Checking word:", word);
+        
+            const usedLetters = new Set();
+            let position = 0;
+        
+            for (let i = 0; i < word.length; i++) {
+                const letter = word[i].toUpperCase();
+        
+                if (position < inputLetters.length && letter === inputLetters[position].toUpperCase() && !usedLetters.has(letter.toUpperCase())) {
+                    usedLetters.add(letter.toUpperCase());
+                    position++;
+                } else {
+                    console.log("Invalid letter:", letter);
+                    return false;
+                }
+            }
+        
+            console.log("Word is valid");
+            return true; // Ensure all positions are validated
         }
-    }
-
-    console.log("Word is valid");
-    return true; // Ensure all positions are validated
-}
 
 
 
