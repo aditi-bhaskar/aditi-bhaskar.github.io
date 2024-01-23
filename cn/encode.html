@@ -33,23 +33,26 @@
             xhr.send();
         }
 
+
+
+        
         function checkWords() {
             const inputText = document.getElementById('textInput').value.toUpperCase().split(',');
-
+        
             // Check for distinct letters
             const distinctLetters = new Set(inputText);
             if (inputText.length !== distinctLetters.size) {
                 console.error("Please enter 8 distinct letters.");
                 return;
             }
-
+        
             // Replace 'q' with 'z' and vice versa in the input
             const modifiedInput = inputText.map(letter => (letter === 'Q' ? 'Z' : letter === 'Z' ? 'Q' : letter));
-
+        
             readWordList(function (wordList) {
                 const resultContainer = document.getElementById('resultContainer');
                 resultContainer.innerHTML = ''; // Clear previous results
-
+        
                 wordList.forEach(word => {
                     if (isValidWord(word, modifiedInput)) {
                         console.log("Found word:", word);
@@ -60,6 +63,7 @@
                 });
             });
         }
+
 
         function isValidWord(word, inputLetters) {
             const usedLetters = new Set();
