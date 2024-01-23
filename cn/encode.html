@@ -53,20 +53,22 @@
 
                 function recursiveCheck(remaining, currentWord) {
                     if (remaining.length === 0) {
-                        console.log("Found word:", currentWord);
-                        const resultDiv = document.createElement('div');
-                        resultDiv.textContent = "Found word: " + currentWord;
-                        resultContainer.appendChild(resultDiv);
+                        if (currentWord.length === inputText.length) {
+                            console.log("Found word:", currentWord);
+                            const resultDiv = document.createElement('div');
+                            resultDiv.textContent = "Found word: " + currentWord;
+                            resultContainer.appendChild(resultDiv);
+                        }
                         return;
                     }
-
+                
                     const firstTwoLetters = remaining.slice(0, 2);
                     const lastLetter = remaining.slice(-1);
-
+                
                     // Check each position in the word
                     for (let j = 0; j <= currentWord.length; j++) {
                         const newWord = currentWord.slice(0, j) + firstTwoLetters.join('') + lastLetter.join('') + currentWord.slice(j);
-
+                
                         // Recursive call with the remaining letters and the updated word
                         recursiveCheck(remaining.slice(2, -1), newWord);
                     }
