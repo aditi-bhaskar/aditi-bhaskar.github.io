@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>SlashSwap</title>
+ <link rel="icon" type="image/x-icon" href="/images/a_pfp.jpg" />
+ <link rel="stylesheet" type="text/css" href="../style.css" media="all" />
+ <style>
+   label, input {
+     display: inline-block;
+     vertical-align: middle;
+     font-size: 1.1em;
+     color: white;
+   }
+   input {
+     width: 100%;
+     padding: 0.3em;
+     /* margin-left: 0.5em; */
+     color: black;
+     background-color: #C7A8E4;
+     border: none;
+     border-radius: 4px;
+     font-family: monospace;
+   }
+    button {
+    display: block;
+    margin: 1em 0 1em auto;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: monospace;
+    }
+   button.copy-btn {
+     font-size: 1.5em;
+     margin-top: 0.25em;
+     background: transparent;
+     padding: 0;
+     margin-left: 0;
+     margin-bottom: 1em;
+   }
+   h4 {
+     color: white;
+     font-weight: normal;
+     margin-bottom: 0.2em;
+   }
+   #output {
+     display: block;
+     margin-top: 0.25em;
+     font-family: monospace;
+     white-space: pre-wrap;
+     color: white;
+   }
+ </style>
+</head>
+<body style="background-color:#543B6E">
+ <nav>
+   <a href="../index">Back to Home</a>
+ </nav>
+
+ <h3>Slash Swap!</h3>
+ <p>Convert / to \ in filepaths (Easy for unix ↔ windows conversion)</p>
+
+ <p><label for="filepath">Enter file path:</label>
+ <input
+   type="text"
+   id="filepath"
+   placeholder="C:\Users\name\Documents\file.txt"
+   oninput="convert()"
+ /></p>
+
+ <button onclick="toggleDirection()">Reslash</button>
+
+ <h4>Converted path:</h4>
+ <p><span id="output"></span></p>
+
+ <br>
+ <button class="copy-btn" title="Copy converted path" onclick="copyOutput()" style="color:white">📠 copy 📠</button>
+
+ <script>
+   let slashToForward = true;
+
+   function convert() {
+     const input = document.getElementById("filepath").value;
+     let output;
+
+     const hasForward = input.includes("/");
+     const hasBack = input.includes("\\");
+
+     if (hasForward && hasBack) {
+       if (slashToForward) {
+         output = input.replace(/\\/g, "/");
+       } else {
+         output = input.replace(/\//g, "\\");
+       }
+     } else {
+       output = slashToForward
+         ? input.replace(/\\/g, "/")
+         : input.replace(/\//g, "\\");
+     }
+
+     document.getElementById("output").textContent = output;
+   }
+
+   function toggleDirection() {
+     slashToForward = !slashToForward;
+     convert();
+   }
+
+   function copyOutput() {
+     const text = document.getElementById("output").textContent;
+     if (!text) return;
+     navigator.clipboard.writeText(text).then(() => {
+       alert("Copied to clipboard!");
+     }).catch(() => {
+       alert("Failed to copy.");
+     });
+   }
+ </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Dino</title>
+ <link rel="icon" type="image/x-icon" href="/images/a_pfp.jpg" />
+ <link rel="stylesheet" type="text/css" href="../style.css" media="all" />
+
+ <style>
+    #game-ui {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  color: white;
+  font-family: sans-serif;
+}
+
+#game {
+  position: relative;
+  height: 150px;
+  background: #76529c;
+  overflow: hidden;
+  margin: 40px auto;
+  width: 90%;
+  border-radius: 10px;
+}
+
+#dino {
+  position: absolute;
+  left: auto;
+  right: 40px;
+  bottom: 0;
+  font-size: 2.5em;
+  transition: bottom 0.2s;
+}
+
+.flower {
+  position: absolute;
+  bottom: 0;
+  font-size: 2em;
+  transition: left 0.03s;
+}
+
+#game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+#restart-btn, #start-btn {
+  background: #C7A8E4;
+  border: none;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#restart-btn:hover, #start-btn:hover {
+  background: #e5c2ff;
+}
+
+ </style>
+</head>
+<body style="background-color:#543B6E">
+ <nav>
+   <a href="../index">Back to Home</a> 🌸 <a href="../weblog">Back to Weblog</a>
+ </nav>
+
+ <h1>Dino</h1>
+<p>Use space or tap to jump</p>
+ <div id="game-ui">
+  <button id="start-btn">Start</button>
+  <div id="score">Score: 0</div>
+</div>
+
+<div id="game">
+  <div id="dino" style="right: 40px; left: auto;">🦆</div>
+</div>
+
+<div id="game-over" hidden>
+  <div id="final-score">Score: 0</div>
+  <button id="restart-btn">Restart</button>
+</div>
+
+<script>
+  const dino = document.getElementById("dino");
+  const game = document.getElementById("game");
+  const startBtn = document.getElementById("start-btn");
+  const restartBtn = document.getElementById("restart-btn");
+  const gameOverScreen = document.getElementById("game-over");
+  const scoreDisplay = document.getElementById("score");
+  const finalScoreDisplay = document.getElementById("final-score");
+
+  let jumping = false;
+  let gameInterval, flowerInterval, score = 0;
+
+  function jump() {
+    if (jumping) return;
+    jumping = true;
+    dino.style.bottom = "100px";
+    setTimeout(() => {
+      dino.style.bottom = "0px";
+      jumping = false;
+    }, 500);
+  }
+
+
+  function createFlower() {
+  const flower = document.createElement("div");
+  flower.classList.add("flower");
+  flower.innerText = "🌸";
+  flower.style.left = "0%";
+  game.appendChild(flower);
+
+  let start = null;
+  const speed = 100; // pixels per second
+
+  function moveFlower(timestamp) {
+    if (!start) start = timestamp;
+    const elapsed = timestamp - start;
+    const left = (elapsed / 1000) * speed; // % movement from 0 → 100
+
+    flower.style.left = left + "%";
+
+    // Convert to pixel position for collision
+    const flowerLeftPx = (left / 100) * game.offsetWidth;
+    const dinoLeftPx = game.offsetWidth - 60; // Dino near right edge
+    const dinoBottom = parseInt(dino.style.bottom || 0);
+
+    if (flowerLeftPx > dinoLeftPx - 20 && flowerLeftPx < dinoLeftPx + 20 && dinoBottom < 40) {
+      flower.remove();
+      endGame();
+      return;
+    }
+
+    if (left < 105) {
+      requestAnimationFrame(moveFlower);
+    } else {
+      flower.remove();
+    }
+  }
+
+  requestAnimationFrame(moveFlower);
+}
+
+
+
+  function startGame() {
+    score = 0;
+    scoreDisplay.innerText = "Score: 0";
+    startBtn.disabled = true;
+    startBtn.style.opacity = 0.5;
+    gameOverScreen.hidden = true;
+    gameInterval = setInterval(() => {
+      score++;
+      scoreDisplay.innerText = "Score: " + score;
+    }, 500);
+    flowerInterval = setInterval(createFlower, 1800);
+  }
+
+  function endGame() {
+    clearInterval(gameInterval);
+    clearInterval(flowerInterval);
+    document.querySelectorAll(".flower").forEach(f => f.remove());
+    gameOverScreen.hidden = false;
+    finalScoreDisplay.innerText = "Score: " + score;
+    startBtn.disabled = false;
+    startBtn.style.opacity = 1;
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.code === "Space") {
+      jump();
+    }
+  });
+  document.addEventListener("touchstart", jump); 
+
+  startBtn.addEventListener("click", startGame);
+  restartBtn.addEventListener("click", startGame);
+</script>
+
+
+</body>
+</html>

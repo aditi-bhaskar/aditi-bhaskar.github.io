@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Tech Support: Email forwarding</title>
+ <link rel="icon" type="image/x-icon" href="/images/a_pfp.jpg">
+ <link rel="stylesheet" type="text/css" href="../style.css" media="all">
+</head>
+<body style="background-color:#543B6E">
+ <nav>
+ <a href="https://aditi-bhaskar.github.io" style="color:#F2F5FC">Back to Home</a>
+ </nav>
+ 
+ <h1>Outlook and Gmail</h1>
+<p>By Aditi Bhaskar, June 2023</p>
+
+<p>You may be asking, "Why can't I just use <a href="https://blog.google/products/gmail/gmailify-best-of-gmail-without-gmail/">gmailify</a> or something to link my Stanford Outlook email address to a gmail inbox and calendar?" 
+ Well, Stanford doesn't let us do that. So we are left to find alternative solutions... </p>
+ 
+<h3>Outlook inbox -> Gmail && Gmail -> Outlook email address</h3>
+<p>
+ Part A - create gmail acc... <br>
+ &emsp;1. Create a new Gmail account which will be linked to your Stanford email by the end of this. You can use an existing account, but it is preferable to keep school and personal emails and calendars separate. <br><br>
+ Part B - in Outlook inbox... <br>
+ &emsp;1. Go to Settings (gear in top right) -> Mail -> Rules -> Add New Rule. See Step B2 (below) for parameters.<br>
+ &emsp;2. Condition: sent to your Stanford email, and Action: forward to your personal gmail created in step A1<br>
+ &emsp;3. There might be a short verification process and a confirmation email. Follow all steps. <br>
+ &emsp;4. Now, all emails sent to your Stanford email will appear in your Gmail inbox. You can send an email from a tertiary/separate email to test how it works.<br><br>
+ Part C - in linked gmail inbox... <br>
+ &emsp;1. Settings (gear in top right) -> see all settings -> Accounts and Import -> Send Mail As -> Add Account. See Step C2 (below) for parameters.<br>
+ &emsp;2. SMTP Server: smtp.stanford.edu. Port: 465. Username and password is your-sunet-id@stanford.edu and your SUNet ID password respectively. Make sure you are securing your connection via SSL, not TLS. If you don't go to Stanford, use your school email address and other login information as needed.<br>
+ &emsp;3. Follow the verification process<br>
+ &emsp;4. Now, whenever you compose an email using your personal gmail, you can choose which account to send them from.<br>
+ * If you want to set your Stanford email as your primary for outgoing messages (you hit "compose", and it automatically starts a draft from your-sunet-id@stanford.edu email): go to Settings -> see all settings -> accounts and import -> send mail as. From here, make your Stanford email address your primary. You can also choose to reply to messages with "the same address the message was sent to".
+</p> <br>
+
+<h3>Outlook calendar -> Google calendar</h3>
+<p>Google Calendar procedure linked <a href="https://www.alphr.com/sync-outlook-calendar-google-calendar/">here</a></p> <br>
+
+<h3>thanks!</h3>
+<p>If (a) this information helped you, (b) you need further help setting things up, or (c) you have more tips-and-tricks I can add here, let me know! Thanks for stopping by! Disclaimer: Written during summer vacation :)</p>
+
+</body>
+ </html>
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>ASCEND</title>
+ <link rel="icon" type="image/x-icon" href="/images/a_pfp.jpg">
+ <link rel="stylesheet" type="text/css" href="../style.css" media="all">
+</head>
+<body style="background-color:#543B6E">
+ <nav>
+ <a href="https://aditi-bhaskar.github.io" style="color:#F2F5FC">Back to Home</a>
+ </nav>
+ 
+ <h1>ASCEND (My research!)</h1>
+<p>By Aditi Bhaskar, April 2023</p>
+
+<h3>Motivation</h3>
+<p>Eutrophication -- when overapplied nutrients (especially in agricultural settings) in runoff lead to algae blooms and other environmental hazards. Sensors on the market to detect N, P, K, and S are high-cost and inaccurate so sometimes applying more fertilizer (even when it is not necessary) is considered the easier option, versus buying and using sensors to limit overapplication of nutrients.</p> 
+
+<h3>2020-2021</h3>
+<p>Method: Put briefly, I looked into visually detecting nitrogen, a common element in fertilizer, using chemical manipulations. After attempting a variety of simple visually-indicating reactions, single cell copper electrolysis shined as the best visual indicator: 2 copper electrodes, a 9V battery, and 5mL of sample solution. After five minutes, single cell copper electrolysis turns a sample blue; the blueness is proportional to the sample’s concentration of nitrogen (in forms of ammonium and nitrate). 
+</p> 
+<p>Drawbacks: This method did not account for mixed samples, say, of nitrogen in the form of nitrate mixed with sulfate. Both compounds turn blue, so the copper electrolytic visual indicator lacked an ability to distinguish between compounds. 
+</p>
+ <br>
+ <img src="ascend/ascendimgs_1.png" style="width:300px;">
+  <br>
+  
+ <h3>2021-2022</h3>
+<p>Method: Spectrometry was introduced to my nitrogen detection method as an adaptation to account for the distinguishability issue. I built a mini spectrophotometer to run my tests on electrolyzed samples, and my spectrophotometer included a darkbox with photoemitters and photodetectors at necessary wavelengths, plus appropriate electronics and code to compute the molarity of a sample from its raw transmittance intensity (Beer-Lambert Law). Overall, the detection method now consisted of a) copper electrolysis, b) spectrometric transmittence intensity measurement, c) calculated molarity. This amended method worked well to measure nitrogen (and sulfate, in some further trials) in soil and water samples.
+</p> 
+<p>Drawbacks: This method required the user to follow a sequence of steps; why not compile it into a more robust device?
+</p>
+  <br>
+
+ <img src="ascend/ascendimgs_7.png" style="width:300px;">
+  
+<br>
+ <h3>2022-2023</h3>
+<p>Method: A handheld device to detect nutrients, which reduces bulkiness and increasing ease of use. This included the physical device CAD, PCB, and coding a state-machine For CAD, I used Onshape to design a fluid body with highly turbid channels for fluid flow. For custom PCB design, I used what I had learned from breadboard work to create a schematic and PCB design, which included an Arduino microcontroller with connections to photoemitters, photodetectors, an OLED board for communication, buttons, and a battery connection. My design also considered laminar/turbulent flows between electrolysis and spectrometric chambers. </p>
+<p>There were also improvements to the measurement process including baseline LED's to help with turbidity and a bit of machine learning to improve accuracy when measuring N, P, S concentrations in mixed samples.</p> 
+<p>Additional compounds such as phosphate and sulfate were integrated into my handheld device to expand its scope of detection. The present device detects and measures four separate nutrients in aqueous samples:  nitrate, ammonium, phosphate, and sulfate. It's named ASCEND: Aqueous Spectrometric Copper-Electrolytic Nutrient Detector. I am the sole inventor on US Non-Provisional Utility Patent 17|963,832. common misconception: ASCEND does not detect copper, rather it uses copper in its detection system
+</p>
+<a href="https://www.youtube.com/watch?v=3_oxnzc2RWM">project video</a>
+<br>
+ <img src="ascend/ascendimgs_4.png" style="width:300px;">
+ <br>
+ <img src="ascend/ascendimgs_5.png" style="width:300px;">
+ <img src="ascend/ascendimgs_6.png" style="width:400px;">
+   <br>
+ <img src="ascend/ascendimgs_3.png" style="width:400px;">
+ <br>
+ <img src="ascend/ascendimgs_2.png" style="width:400px;">
+ <br>
+ 
+    <p>Disclaimer: It may have been a while since this page was formally updated! Also, email me if you would like to see abstracts/papers from any of the years of research. They were all presented at ISEF.</p>
+ </body>
+ </html>

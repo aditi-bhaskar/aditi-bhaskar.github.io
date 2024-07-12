@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cover</title>
+  <link rel="icon" type="image/x-icon" href="/images/a_pfp.jpg" />
+  <link rel="stylesheet" type="text/css" href="../style.css" media="all" />
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #543B6E;
+      /* original background */
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      font-family: monospace;
+      z-index: 200;
+    }
+
+    h1,
+    p {
+      margin-top: 60px;
+      font-family: monospace;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../index">Back to Home</a> 🌸 <a href="../weblog">Back to Weblog</a>
+  </nav>
+
+  <h1>Cover</h1>
+
+  <p>Use arrow keys to move icon across screen and cover it! Not supported on touchscreen.</p>
+
+
+  <canvas id="gameCanvas" style="position:fixed; top:40px; left:0; z-index:1000;"></canvas>
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Resize and update grid
+    let cellSize = 30;
+    let cols, rows;
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      cols = Math.floor(canvas.width / cellSize);
+      rows = Math.floor(canvas.height / cellSize);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Grid
+    let grid = [];
+    let playerX = Math.floor(cols / 2);
+    let playerY = Math.floor(rows / 2);
+    let score = 0;
+    let phase = 'cover';
+    let flowers = [];
+    let flowerEmoji = '🌸';
+    let touchStartX = null;
+
+    function initGrid() {
+      grid = Array(rows).fill().map(() => Array(cols).fill(false));
+      grid[playerY][playerX] = true;
+    }
+
+    function initFlowers(count = 3) {
+      flowers = [];
+      for (let i = 0; i < count; i++) spawnFlower();
+    }
+
+    function initGame(newGame = true) {
+      resize();
+      if (newGame) {
+        playerX = Math.floor(cols / 2);
+        playerY = Math.floor(rows / 2);
+        score = 0;
+        phase = 'cover';
+      }
+      initGrid();
+      initFlowers();
+      draw();
+    }
+
+    function spawnFlower() {
+      const valid = [];
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          const shouldSpawn = (phase === 'cover' && !grid[y][x]) || (phase === 'clear' && grid[y][x]);
+          if (shouldSpawn && !flowers.some(f => f.x === x && f.y === y)) {
+            valid.push({ x, y });
+          }
+        }
+      }
+      if (valid.length === 0) return;
+      flowers.push(valid[Math.floor(Math.random() * valid.length)]);
+    }
+
+
+    function checkPhaseSwitch() {
+      const all = grid.flat();
+      if (phase === 'cover' && all.every(cell => cell === true)) {
+        phase = 'clear';
+        flowerEmoji = '🌼';
+        flowers = [];
+      } else if (phase === 'clear' && all.every(cell => cell === false)) {
+        phase = 'cover';
+        flowerEmoji = '🌸';
+        flowers = [];
+      }
+
+      // Always keep a few flowers around
+      if (flowers.length < 3) spawnFlower();
+    }
+
+    function move(dx, dy) {
+      const nx = playerX + dx;
+      const ny = playerY + dy;
+      if (nx < 0 || nx >= cols || ny < 0 || ny >= rows) return;
+      playerX = nx;
+      playerY = ny;
+
+      // Update grid
+      grid[playerY][playerX] = phase === 'cover';
+
+      // Eat flower
+      const idx = flowers.findIndex(f => f.x === playerX && f.y === playerY);
+      if (idx !== -1) {
+        flowers.splice(idx, 1);
+        score++;
+        spawnFlower();
+      }
+
+      checkPhaseSwitch();
+      draw();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          if (grid[y][x]) {
+            ctx.fillStyle = phase === 'cover' ? '#BB86FC' : '#3B1A4D';
+            ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+          }
+        }
+      }
+
+      // Flowers
+      ctx.font = `${cellSize - 4}px serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      for (let f of flowers) {
+        const isValid =
+          (phase === 'cover' && !grid[f.y][f.x]) ||
+          (phase === 'clear' && grid[f.y][f.x]);
+
+        if (isValid) {
+          ctx.fillText(flowerEmoji, f.x * cellSize + cellSize / 2, f.y * cellSize + cellSize / 2);
+        }
+      }
+
+
+      // Player
+      ctx.fillStyle = '#FFD700';
+      ctx.fillRect(playerX * cellSize, playerY * cellSize, cellSize, cellSize);
+
+      // Score
+      ctx.fillStyle = 'white';
+      ctx.font = '18px monospace';
+      ctx.textAlign = 'right';
+      ctx.fillText(`Score: ${score}`, canvas.width - 10, 24);
+    }
+
+    // Controls
+    window.addEventListener('keydown', e => {
+      switch (e.key) {
+        case 'ArrowUp': move(0, -1); e.preventDefault(); break;
+        case 'ArrowDown': move(0, 1); e.preventDefault(); break;
+        case 'ArrowLeft':
+        case 'a': move(-1, 0); e.preventDefault(); break;
+        case 'ArrowRight':
+        case 'd': move(1, 0); e.preventDefault(); break;
+      }
+    });
+
+    // Touch support
+    canvas.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+    });
+    canvas.addEventListener('touchend', e => {
+      if (touchStartX === null) return;
+      const deltaX = e.changedTouches[0].clientX - touchStartX;
+      if (deltaX > 20) move(1, 0);
+      else if (deltaX < -20) move(-1, 0);
+      touchStartX = null;
+    });
+
+    initGame(true);
+  </script>
+
+
+</body>
+
+</html>
