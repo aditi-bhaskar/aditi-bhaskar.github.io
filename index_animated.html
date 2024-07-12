@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aditi’s Website</title>
+
+<style>
+  body {
+    margin: 0;
+    background: #543B6E;
+    color: #F2F5FC;
+    font-family: "Courier New", monospace;
+    overflow: hidden;
+  }
+
+  h1 {
+    text-align: center;
+    margin: 10px 0;
+    font-family: system-ui, sans-serif;
+  }
+
+  #map {
+    position: relative;
+    width: 100vw;
+    height: 80vh;
+  }
+
+  .building {
+    position: absolute;
+    white-space: pre;
+    font-size: 13px;
+    line-height: 1.1;
+    cursor: pointer;
+  }
+
+  .near {
+    color: #F4C95D !important;
+  }
+
+  .label {
+    text-align: center;
+    font-size: 12px;
+    font-family: system-ui, sans-serif;
+    margin-top: 2px;
+  }
+
+  .decor {
+    position: absolute;
+    white-space: pre;
+    font-size: 13px;
+    line-height: 1.1;
+    pointer-events: none;
+  }
+
+  #character {
+    position: absolute;
+    font-size: 22px;
+    pointer-events: none;
+  }
+
+  .footstep {
+    position: absolute;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  footer {
+    text-align: center;
+    opacity: 0.7;
+    font-family: system-ui, sans-serif;
+  }
+</style>
+</head>
+
+<body>
+<h1>Hello World!</h1>
+
+<div id="map">
+  <div id="character">🌸</div>
+
+  <!-- CLICKABLE HOUSES -->
+  <div class="building" data-link="about" style="top:10%; left:15%; color:#FFD6E8;">
+ /\ 
+/__\
+|  |
+|__|
+  <div class="label">About</div>
+  </div>
+
+  <div class="building" data-link="projects" style="top:30%; left:50%; color:#D6FFF3;">
+ /\ 
+/__\
+|..|
+|__|
+  <div class="label">Projects</div>
+  </div>
+
+  <div class="building" data-link="work" style="top:70%; left:60%; color:#FFF2CC;">
+ /\ 
+/__\
+||||
+|__|
+  <div class="label">Work</div>
+  </div>
+
+  <div class="building" data-link="weblog" style="top:80%; left:20%; color:#E4D6FF;">
+ /\ 
+/__\
+|--|
+|__|
+  <div class="label">Weblog</div>
+  </div>
+
+  <div class="building" data-link="contact" style="top:40%; left:30%; color:#D6E8FF;">
+ /\ 
+/__\
+|<>|
+|__|
+  <div class="label">Contact</div>
+  </div>
+
+  <!-- SECRET HOUSE -->
+  <div class="building" data-link="42.html" style="top:15%; left:85%; color:#FFB3B3;">
+ /\ 
+/__\
+|??|
+|__|
+  </div>
+
+  <!-- FILLER HOUSES -->
+  <div class="building" style="top:20%; left:70%; color:#DDD;">
+  /\ 
+ /__\ 
+ |__| 
+ |__|
+  </div>
+
+  <div class="building" style="top:55%; left:80%; color:#DDD;">
+  /\ 
+ /__\ 
+ |__| 
+ |__|
+  </div>
+
+  <div class="building" style="top:75%; left:40%; color:#DDD;">
+  /\ 
+ /__\ 
+ |__| 
+ |__|
+  </div>
+
+  <div class="building" style="top:35%; left:90%; color:#DDD;">
+  /\ 
+ /__\ 
+ |__| 
+ |__|
+  </div>
+
+  <div class="building" style="top:60%; left:10%; color:#DDD;">
+  /\ 
+ /__\ 
+ |__| 
+ |__|
+  </div>
+
+  <!-- TREES -->
+  <div class="decor" style="top:5%; left:25%; color:#A7E3A1;">
+  ^^  
+ ^^^^ 
+^^^^^^
+  ||
+  </div>
+
+  <div class="decor" style="top:15%; left:60%; color:#A7E3A1;">
+ ^^  
+^^^^   
+ ||
+  </div>
+
+  <div class="decor" style="top:25%; left:80%; color:#A7E3A1;">
+ ^^  
+^^^^   
+ ||
+  </div>
+
+  <div class="decor" style="top:35%; left:15%; color:#A7E3A1;">
+ ^^  
+^^^^   
+ ||
+  </div>
+
+  <div class="decor" style="top:50%; left:40%; color:#A7E3A1;">
+ ^^  
+^^^^   
+ ||
+  </div>
+
+  <div class="decor" style="top:65%; left:75%; color:#A7E3A1;">
+  ^^  
+ ^^^^ 
+^^^^^^
+  ||
+  </div>
+
+  <div class="decor" style="top:75%; left:15%; color:#A7E3A1;">
+ ^^  
+^^^^   
+ ||
+  </div>
+
+  <div class="decor" style="top:85%; left:55%; color:#A7E3A1;">
+ ^^  
+^^^^   
+ ||
+  </div>
+
+  <div class="decor" style="top:60%; left:90%; color:#A7E3A1;">
+ ^^  
+^^^^   
+ ||
+  </div>
+
+  <div class="decor" style="top:30%; left:5%; color:#A7E3A1;">
+ ^^  
+^^^^   
+ ||
+  </div>
+
+</div>
+
+<footer>Walk with arrows / WASD · Press Enter or click a house</footer>
+
+<script>
+const character = document.getElementById("character");
+const buildings = document.querySelectorAll(".building");
+const map = document.getElementById("map");
+
+let x = map.clientWidth / 2;
+let y = map.clientHeight / 2;
+let footsteps = [];
+let activeBuilding = null;
+
+const MAX_STEPS = 6;
+const SPEED = 8;
+
+function clamp(v, min, max) {
+  return Math.max(min, Math.min(max, v));
+}
+
+function updateChar() {
+  const maxX = map.clientWidth - 24;
+  const maxY = map.clientHeight - 24;
+  x = clamp(x, 0, maxX);
+  y = clamp(y, 0, maxY);
+  character.style.left = x + "px";
+  character.style.top = y + "px";
+}
+
+function addFootstep() {
+  const step = document.createElement("div");
+  step.className = "footstep";
+  step.textContent = ";";
+  step.style.left = x + "px";
+  step.style.top = y + "px";
+  map.appendChild(step);
+  footsteps.push(step);
+  if (footsteps.length > MAX_STEPS) {
+    map.removeChild(footsteps.shift());
+  }
+}
+
+function getBuildingCenter(b) {
+  const mapRect = map.getBoundingClientRect();
+  const r = b.getBoundingClientRect();
+  return {
+    x: r.left - mapRect.left + r.width / 2,
+    y: r.top  - mapRect.top  + r.height / 2
+  };
+}
+
+function checkProximity() {
+  activeBuilding = null;
+  buildings.forEach(b => {
+    b.classList.remove("near");
+    if (!b.dataset.link) return;
+    const c = getBuildingCenter(b);
+    if (Math.hypot(c.x - x, c.y - y) < 55) {
+      b.classList.add("near");
+      activeBuilding = b;
+    }
+  });
+}
+
+window.addEventListener("keydown", e => {
+  if (e.key === "ArrowRight" || e.key === "d") x += SPEED;
+  if (e.key === "ArrowLeft"  || e.key === "a") x -= SPEED;
+  if (e.key === "ArrowUp"    || e.key === "w") y -= SPEED;
+  if (e.key === "ArrowDown"  || e.key === "s") y += SPEED;
+
+  if (e.key === "Enter" && activeBuilding) {
+    window.location.href = activeBuilding.dataset.link;
+  }
+
+  addFootstep();
+  updateChar();
+  checkProximity();
+});
+
+buildings.forEach(b => {
+  if (b.dataset.link) {
+    b.addEventListener("click", () => {
+      window.location.href = b.dataset.link;
+    });
+  }
+});
+
+updateChar();
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,32 @@
+
+h1 {color:#FFFFFF; font-family: "Lucida Handwriting", Monaco, Garamond;}
+
+h2 {color:#FFFFFF; font-family: "Lucida Handwriting", Monaco, Garamond;}
+
+h3 {color:#F2F5FC; font-family: "Lucida Handwriting", Monaco, Garamond;}
+
+h4 {color:#F2F5FC; font-family: "Lucida Handwriting", Monaco, Garamond;}
+
+p {color:#EDDBFD; font-family: Montserrat, Monaco, Garamond;}
+
+a {color:#D7F3DB; font-family: Montserrat, Monaco, Garamond;} 
+
+li {color:#C7A8E4; font-family: Montserrat, Monaco, Garamond;}
+
+highlight-green {
+  background: linear-gradient(180deg, #543B6E 60%, #89B89E 60%);
+  color: #FFFFFF;
+  font-size: 2em;
+  font-family: "Lucida Handwriting", Montserrat, Monaco, Garamond;
+}
+
+proj-details {
+  color: #FFFFFF; 
+  margin-left: 0.5%;
+  font-family: Montserrat, Monaco, Garamond;
+}
+
+/* body {
+  width: 5in;
+} */
+

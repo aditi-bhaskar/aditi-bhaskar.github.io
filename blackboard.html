@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black;
+        }
+        canvas {
+            display: block;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas"></canvas>
+
+<script>
+    const c = document.getElementById("myCanvas");
+    const ctx = c.getContext("2d");
+
+    function resizeCanvas() {
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas(); // Initial resize
+
+    c.addEventListener("mousedown", setLastCoords);
+    c.addEventListener("mousemove", freeForm);
+
+    function setLastCoords(e) {
+        lastX = e.clientX;
+        lastY = e.clientY;
+    }
+
+    function freeForm(e) {
+        if (e.buttons !== 1) return;
+        penTool(e);
+    }
+
+    function penTool(e) {
+        ctx.beginPath();
+        ctx.lineWidth = 5;
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(e.clientX, e.clientY);
+        ctx.strokeStyle = 'white';
+        ctx.stroke();
+        ctx.closePath();
+
+        lastX = e.clientX;
+        lastY = e.clientY;
+    }
+
+    let lastX = 0, lastY = 0;
+</script>
+
+</body>
+</html>
