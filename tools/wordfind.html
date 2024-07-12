@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Wordfind</title>
+ <link rel="icon" type="image/x-icon" href="/images/a_pfp.jpg" />
+ <link rel="stylesheet" type="text/css" href="../style.css" media="all" />
+
+
+ 
+</head>
+
+<body style="background-color:#543B6E;">
+  <nav>
+   <a href="../index">Back to Home</a> 🌸 <a href="../weblog">Back to Weblog</a>
+  </nav>
+
+  <h1>Wordfind</h1>
+
+  <p>
+    <label for="wordInput">Enter words (max 50 chars total):</label><br />
+    <textarea id="wordInput" rows="3" cols="30" style="font-family: monospace;"></textarea>
+    <span id="charCount" style="margin-left:10px;">0/50</span>
+    <br /><br />
+
+    <label for="delimiterInput">Delimiter (e.g. comma, space): </label>
+    <input id="delimiterInput" type="text" value="," size="2" />
+    <br /><br />
+
+    <label for="gridSizeInput">Grid Size (max 12): </label>
+    <input id="gridSizeInput" type="number" min="3" max="12" value="10" />
+    <br /><br />
+
+    <button onclick="generateGrid()" style="cursor:pointer; padding:0.5em 1em;">Generate Grid</button>
+  </p>
+  <p id="warning" style="color:#f88; font-weight:bold; margin-top:1em;"></p>
+
+  <div id="gridContainer" style="
+    max-width: max-content;
+    margin: 1em auto;
+    padding: 1.5em;
+    background: rgba(200, 150, 230, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    font-family: monospace;
+    font-size: 1.1em;
+    white-space: pre;
+    color: white;
+    min-width: fit-content;
+  ">
+    <pre id="gridDisplay"></pre>
+  </div>
+
+<script>
+// Update live char count with coloring
+const wordInput = document.getElementById('wordInput');
+const charCount = document.getElementById('charCount');
+wordInput.addEventListener('input', () => {
+  const len = wordInput.value.length;
+  charCount.textContent = `${len}/50`;
+  if(len > 50) {
+    charCount.style.color = '#f88';
+  } else {
+    charCount.style.color = 'white';
+  }
+});
+
+function generateGrid() {
+  const warningEl = document.getElementById("warning");
+  const rawInput = wordInput.value.trim().toUpperCase();
+  const delimiter = document.getElementById("delimiterInput").value || ",";
+  let gridSizeInput = parseInt(document.getElementById("gridSizeInput").value);
+  const maxGridSize = 12;
+
+  warningEl.textContent = "";
+  document.getElementById("gridDisplay").textContent = "";
+
+  if (rawInput.length > 50) {
+    warningEl.textContent = "⚠️ Input too long! Please enter at most 50 characters total.";
+    return;
+  }
+
+  const words = rawInput.split(delimiter).map(w => w.trim()).filter(w => w);
+  if (words.length === 0) {
+    warningEl.textContent = "⚠️ Please enter at least one word.";
+    return;
+  }
+
+  const maxWordLen = words.reduce((max, w) => Math.max(max, w.length), 0);
+  const minGridSize = maxWordLen;
+  if (gridSizeInput < minGridSize) {
+    warningEl.textContent = `⚠️ Grid size too small! Minimum grid size is ${minGridSize} (longest word length).`;
+    return;
+  }
+  if (gridSizeInput > maxGridSize) gridSizeInput = maxGridSize;
+
+  const tooLongWord = words.find(w => w.length > gridSizeInput);
+  if (tooLongWord) {
+    warningEl.textContent = `⚠️ The word "${tooLongWord}" is longer than the grid size (${gridSizeInput}).`;
+    return;
+  }
+
+  let grid = Array.from({ length: gridSizeInput }, () => Array(gridSizeInput).fill(""));
+
+  for (let word of words) {
+    let placed = false;
+    for (let tries = 0; tries < 100; tries++) {
+      const row = Math.floor(Math.random() * gridSizeInput);
+      const col = Math.floor(Math.random() * (gridSizeInput - word.length + 1));
+
+      let spaceFree = true;
+      for (let i = 0; i < word.length; i++) {
+        if (grid[row][col + i] !== "" && grid[row][col + i] !== word[i]) {
+          spaceFree = false;
+          break;
+        }
+      }
+      if (spaceFree) {
+        for (let i = 0; i < word.length; i++) {
+          grid[row][col + i] = word[i];
+        }
+        placed = true;
+        break;
+      }
+    }
+    if (!placed) {
+      warningEl.textContent = `⚠️ Couldn't place the word "${word}" without overlap after many tries. Try a bigger grid or fewer words.`;
+      return;
+    }
+  }
+
+  // Frequency letters from words
+  const letterPool = words.join('').split('');
+  const freq = {};
+  for (let c of letterPool) freq[c] = (freq[c] || 0) + 1;
+  const sorted = Object.entries(freq).sort((a,b) => b[1] - a[1]);
+  const topLetters = sorted.length ? sorted.map(e => e[0]) : "ETAOINSHRDLCUMWFGYPBVKJXQZ".split("");
+
+  // Fill blanks with 75% random letters A-Z, 25% from topLetters
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  for (let r = 0; r < gridSizeInput; r++) {
+    for (let c = 0; c < gridSizeInput; c++) {
+      if (!grid[r][c]) {
+        const useRandom = Math.random() < 0.75;
+        grid[r][c] = useRandom ? letters.charAt(Math.floor(Math.random() * letters.length))
+                              : topLetters[Math.floor(Math.random() * topLetters.length)];
+      }
+    }
+  }
+
+  const display = grid.map(row => row.join(" ")).join("\n");
+  document.getElementById("gridDisplay").textContent = display;
+}
+</script>
+
+
+
+</html>
