@@ -11,6 +11,8 @@ body {
   height: 100vh;
 }
 
+*{font-family:"Montserrat";}
+
 /* Styles for website counter container */
 .website-counter {
   background-color: #2e6e88;
