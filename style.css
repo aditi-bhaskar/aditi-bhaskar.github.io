@@ -25,3 +25,7 @@ proj-details {
   margin-left: 0.5%;
   font-family: Montserrat, Monaco, Garamond;
 }
+
+body {
+  width: 5in;
+}
