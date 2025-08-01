@@ -211,61 +211,6 @@ function updateFlowers() {
   }
 }
 
-
-// function updateFlowers() {
-//   for (let i = flowers.length - 1; i >= 0; i--) {
-//     const f = flowers[i];
-//     f.x += f.vx;
-//     f.y += f.vy;
-
-//     // Bounce off left/right walls
-//     if (f.x <= 0) {
-//       f.x = 0;
-//       f.vx *= -1;
-//     }
-//     if (f.x >= gameArea.clientWidth - f.width) {
-//       f.x = gameArea.clientWidth - f.width;
-//       f.vx *= -1;
-//     }
-
-//     // Bounce off top wall
-//     if (f.y <= 0) {
-//       f.y = 0;
-//       f.vy *= -1;
-//     }
-
-//     // Bounce off paddle (if flower touches paddle from above)
-//     if (
-//       f.y + f.height >= paddle.offsetTop &&
-//       f.y + f.height <= paddle.offsetTop + 10 &&  // just slightly inside paddle height for bounce
-//       f.x + f.width >= paddleX &&
-//       f.x <= paddleX + paddle.offsetWidth &&
-//       f.vy > 0  // flower is moving downward toward paddle
-//     ) {
-//       f.vy *= -1;
-//       f.y = paddle.offsetTop - f.height;
-//     }
-
-//     // Bounce off main ball if overlapping
-//     if (rectsOverlap(f.x, f.y, f.width, f.height, ballX, ballY, 20, 20)) {
-//       // Reverse velocities of both flower and ball
-//       f.vx *= -1;
-//       f.vy *= -1;
-//       ballVX *= -1;
-//       ballVY *= -1;
-
-//       // Nudge positions so they separate
-//       f.x += f.vx;
-//       f.y += f.vy;
-//       ballX += ballVX;
-//       ballY += ballVY;
-//     }
-
-//     f.el.style.left = f.x + "px";
-//     f.el.style.top = f.y + "px";
-//   }
-// }
-
 function rectsOverlap(x1, y1, w1, h1, x2, y2, w2, h2) {
   return !(x2 > x1 + w1 || 
            x2 + w2 < x1 || 
