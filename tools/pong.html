@@ -60,10 +60,11 @@
 </head>
 <body style="background-color:#543B6E">
  <nav>
-   <a href="../index">Back to Home</a>
+   <a href="../index">Back to Home</a> 🌸 <a href="../weblog">Back to Weblog</a>
  </nav>
 
  <h1>Pong</h1>
+ <p>Use arrow keys (left/right), a/d keys, or touchscreen to move paddle sideways</p>
 
  <div id="pong-game">
   <div id="ball">🌸</div>
@@ -280,6 +281,24 @@ document.addEventListener("keydown", (e) => {
 
   paddleX = Math.max(0, Math.min(paddleX, gameArea.clientWidth - paddle.offsetWidth));
 });
+
+gameArea.addEventListener("touchmove", (e) => {
+  if (!gameRunning || e.touches.length !== 1) return;
+
+  const touchX = e.touches[0].clientX;
+
+  // Convert screen X to game area's X
+  const gameRect = gameArea.getBoundingClientRect();
+  const relativeX = touchX - gameRect.left;
+
+  // Center paddle under finger
+  paddleX = relativeX - paddle.offsetWidth / 2;
+
+  // Clamp paddle within game area
+  paddleX = Math.max(0, Math.min(paddleX, gameArea.clientWidth - paddle.offsetWidth));
+  paddle.style.left = paddleX + "px";
+});
+
 
 startPong();
 </script>

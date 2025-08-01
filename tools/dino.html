@@ -69,11 +69,11 @@
 </head>
 <body style="background-color:#543B6E">
  <nav>
-   <a href="../index">Back to Home</a>
+   <a href="../index">Back to Home</a> 🌸 <a href="../weblog">Back to Weblog</a>
  </nav>
 
  <h1>Dino</h1>
-
+<p>Use space or tap to jump</p>
  <div id="game-ui">
   <button id="start-btn">Start</button>
   <div id="score">Score: 0</div>
@@ -179,6 +179,7 @@
       jump();
     }
   });
+  document.addEventListener("touchstart", jump); 
 
   startBtn.addEventListener("click", startGame);
   restartBtn.addEventListener("click", startGame);
