@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Projects</title>
+ <link rel="icon" type="image/x-icon" href="/images/a_pfp.jpg">
+ <link rel="stylesheet" type="text/css" href="style.css" media="all">
+ <script>
+   document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+ </script>
+</head>
+<body>
+ <button class="theme-toggle" onclick="toggleTheme()" title="toggle light/dark">&#127769;</button>
+ <nav>
+ <a href="index.html">Back to Home</a>
+ </nav>
+ <h1>Technical Projects</h1>
+
+ <p>Memorable projects that I would love to talk about for hours! Click or hover a title to read more.</p>
+
+ <div class="card-grid">
+
+    <div class="card card-1" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Sock (Handheld bare-metal camera)</span><span class="yr">2026</span></div>
+    <div class="card-detail">
+      <p>A bare metal (on RPI 0) driver and support for camera which sends captures over a bluetooth, then a uart link. Also saves captures to SD card with FAT32 writes. Can view downsampled, filtered livestream on a black/white OLED display at 15fps.</p>
+      <a href="https://github.com/aditi-bhaskar/socks_camera">Github</a><a href="https://cad.onshape.com/documents/dccbd11e94220b0c426c9fce/w/b4ad619e16e452a098de2284/e/75783d83d14b92a884b6b85e">OnShape (CAD Model)</a>
+    </div>
+  </div>
+
+<div class="card card-2" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Warp Balance</span><span class="yr">2025-2026</span></div>
+    <div class="card-detail">
+      <p>Balancing raytrace workloads within a warp using shuffle and other CUDA warp intrinsics. Research with the Compilers Group.</p>
+    </div>
+  </div>
+
+  <div class="card card-3" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Music Accelerator</span><span class="yr">2025</span></div>
+    <div class="card-detail">
+      <p>Built a chorded/multi-instrument music player on PYNQ FPGA in Verilog with harmonics, voicing, and an interactive antialiased VGA display.</p>
+    </div>
+  </div>
+
+  <div class="card card-4" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Understanding & Localizing Time in Language Models</span><span class="yr">2025-present</span></div>
+    <div class="card-detail">
+      <p>Interpretability project using prompting and Pyvene (intervention library) to understand models' understanding & use of their current time.</p>
+      <a href="https://drive.google.com/file/d/1j-P8a1nyQrmShzmgeqrJnUA0yb320Pg_/view">Poster</a><a href="https://github.com/Suzehva/time-in-language-models">Github</a>
+    </div>
+  </div>
+
+  <div class="card card-5" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>20 Questions: Multiturn RLHF for sparse-reward task spaces</span><span class="yr">2025</span></div>
+    <div class="card-detail">
+      <p>Reinforcement Learning project using concepts of multiturn rewards to increase performance on the 20 questions task.</p>
+      <a href="https://drive.google.com/file/d/1CYiMLXqsuEIX5k5IdBINIXQzj0S-390J/view">Poster</a>
+    </div>
+  </div>
+
+  <div class="card card-6" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Suziti File System</span><span class="yr">2025</span></div>
+    <div class="card-detail">
+      <p>A functional FAT32 file system with dir/txt/pbm create/reads/writes. Mini-laptop shaped display & GPIO interface.</p>
+      <a href="https://drive.google.com/file/d/1nTwzEn4GptXMYzJPSFavXpr2TAdBE6bl/view">Info</a><a href="https://github.com/aditi-bhaskar/suziti-filesystem">Github</a><a href="https://cad.onshape.com/documents/8ae28c1d1a02ab9bf86b04ab/w/4935831e12860cc02aea9ffd/e/c0c3fcff074e33fbb3bb3b89?renderMode=0&uiState=67e19c1f35061f3e46146141">Onshape (CAD model)</a>
+    </div>
+  </div>
+
+  <div class="card card-1" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>EGG Device</span><span class="yr">2025</span></div>
+    <div class="card-detail">
+      <p>Developed firmware for a lightweight electrogastroenterogram (EGG) PCB, enabling rapid, live sampling and analysis of electrical signals for accurate physiological data collection. Part of Stanford's Neural Interaction Lab.</p>
+    </div>
+  </div>
+
+  <div class="card card-2" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>MicroMIST</span><span class="yr">2024-present</span></div>
+    <div class="card-detail">
+      <p>A temporal spore-capture device for mycology research. Device geometry funnels wind through narrow path to capture spores in microfuge tubes. Measures temperature, humidity, light, and pressure. Waterproof.</p>
+      <a href="">OnShape (CAD model) (coming soon)</a><a href="https://github.com/aditi-bhaskar/sporetrap">Github (coming soon)</a>
+    </div>
+  </div>
+
+  <div class="card card-3" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Blimpdrones</span><span class="yr">2024</span></div>
+    <div class="card-detail">
+      <p>Cost-effective drones for CS Education (with Stanford Pedagogy in CS "PinCS" Lab).</p>
+      <a href="https://drive.google.com/file/d/1G4aLuj9aJT6hInoIo1FCoHQp85-KZRiq/view">Poster</a>
+    </div>
+  </div>
+
+  <div class="card card-4" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Boxing Gym</span><span class="yr">2024</span></div>
+    <div class="card-detail">
+      <p>Benchmarking platform for reasoning LLMs, leveraging concept discovery & optimal experiment design (with Stanford Behavioral Design Lab).</p>
+      <a href="https://arxiv.org/abs/2501.01540">Paper</a><a href="https://github.com/aditi-bhaskar/boxing-gym">Github (with my contributions shown)</a>
+    </div>
+  </div>
+
+  <div class="card card-5" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Tiltris</span><span class="yr">2024</span></div>
+    <div class="card-detail">
+      <p>Tetris, but with a handheld remote which the player can tilt.</p>
+      <a href="https://github.com/aditi-bhaskar/tiltris">Github</a><a href="https://github.com/aditi-bhaskar/win2024-cs107e-project/tree/main/documents">Demos</a>
+    </div>
+  </div>
+
+  <div class="card card-6" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>ASCEND</span><span class="yr">2020-2023</span></div>
+    <div class="card-detail">
+      <p>My patented work on nutrient detection/measurement.</p>
+      <a href="https://aditi-bhaskar.github.io/pages/ascend.html">About</a><a href="https://projectboard.world/isef/project/ebed012-ascend">Poster</a>
+    </div>
+  </div>
+
+  <div class="card card-1" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Bittle Suite</span><span class="yr">2022</span></div>
+    <div class="card-detail">
+      <p>A game loosely based on Wordle/Letterle.</p>
+      <a href="https://bittlesuite.github.io/">Play Now!</a><a href="https://github.com/bittlesuite/bittlesuite.github.io">Github</a>
+    </div>
+  </div>
+
+  <div class="card card-2" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Robotics (FRC)</span><span class="yr">2019-2023</span></div>
+    <div class="card-detail">
+      <p>"Building robots, building people." I was software lead 2 years, then technical integration lead 1 year on my robotics team. I worked on 7 (maybe 8?) robots including Zeke (2022), Swimmy (2023), our Swerve.</p>
+      <a href="https://github.com/errorcodexero">Github</a><a href="https://youtu.be/faMY8o677f8">Video</a>
+    </div>
+  </div>
+
+ </div>
+
+ <h1>Artsy/Social Projects</h1>
+
+ <p>Here are some less technical works. Enjoy :)</p>
+
+ <div class="card-grid">
+
+  <div class="card card-1" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Memes Page</span><span class="yr">2023-present</span></div>
+    <div class="card-detail">
+      <p>As a meme and CS enjoyer, I present to you:</p>
+      <a href="https://www.instagram.com/stanford.cs.memes/">Stanford CS Memes</a>
+    </div>
+  </div>
+
+  <div class="card card-2" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Hugs</span><span class="yr">2025</span></div>
+    <div class="card-detail">
+      <p>Short film starring the statues around Stanford campus.</p>
+      <a href="https://www.youtube.com/watch?v=WS-qAZuv8ks">Watch on YouTube</a>
+    </div>
+  </div>
+
+  <div class="card card-3" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Ducklings</span><span class="yr">2024-2025</span></div>
+    <div class="card-detail">
+      <p>I printed and handed out these tangible treasures: over 200 of these ducklings are now with my friends, professors, and strangers.</p>
+      <a href="https://cad.onshape.com/documents/eb70ff7fdd49da3267a6aaa8">CAD model</a>
+    </div>
+  </div>
+
+  <div class="card card-4" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Dayakattai</span><span class="yr">2023</span></div>
+    <div class="card-detail">
+      <p>Design & print of a modular/modernized Dayakattai board. Dayakattai is a traditional boardgame, and this board matches the version my family has passed down for many generations.</p>
+      <a href="https://cad.onshape.com/documents/fb3a977d403d00cfb99b811c/w/c503170e410f0fea6470b272/e/16c1a9f56a3c3d2ddc546ca8?renderMode=0&uiState=67dddc52b555a61010339ab9">OnShape (CAD model)</a>
+    </div>
+  </div>
+
+ </div>
+
+ <h1>Work Experience</h1>
+
+ <p>Places I've worked and taught. Click or hover a title to read more.</p>
+
+ <div class="card-grid">
+
+  <div class="card card-1" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Embedded Software Intern @ Infineon Technologies</span><span class="yr">2025</span></div>
+    <div class="card-detail">
+      <p>Worked on the Explorer (Edge 84) chip's Zephyr support leading up to the Market Launch. This included feature implementation (and re-implementation), making internal pages, informal and formal code reviews, bug fixes, merge requests for the chip, merge requests for CI maintenance, and daily standups. Plus, a welcoming community and a lot of git/unix/linux skills.</p>
+      <a href="https://github.com/zephyrproject-rtos">Zephyr</a><a href="https://www.infineon.com/products/microcontroller/32-bit-psoc-arm-cortex/32-bit-psoc-edge-arm/psoc-edge-e84">Edge 84 Product Page</a><a href="https://www.credly.com/users/aditi-bhaskar/badges">Linux Foundation badge</a>
+    </div>
+  </div>
+
+  <div class="card card-2" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Section Leader @ Stanford University</span><span class="yr">2024-2025</span></div>
+    <div class="card-detail">
+      <p>Section Leader (TA) for introductory CS courses (Python + Data Structures/Algorithms in Cpp). Taught 30 students, and debugged with over 100 students. Teaching is fun.</p>
+      <a href="https://web.stanford.edu/class/cs106a/">CS106A (one of the courses I TA'ed for)</a>
+    </div>
+  </div>
+
+ </div>
+
+ <script>
+   function toggleTheme() {
+     var cur = document.documentElement.getAttribute('data-theme');
+     var next = cur === 'light' ? 'dark' : 'light';
+     document.documentElement.setAttribute('data-theme', next);
+     localStorage.setItem('theme', next);
+   }
+ </script>
+</body>
+</html>

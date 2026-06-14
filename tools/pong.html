@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Pong</title>
+ <link rel="icon" type="image/x-icon" href="/images/a_pfp.jpg" />
+ <link rel="stylesheet" type="text/css" href="../style.css" media="all" />
+
+<style>
+  #pong-game {
+    position: relative;
+    width: 300px;
+    height: 300px; /* taller */
+    background: #8653a3;
+    margin: 2em auto;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  #ball {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    font-size: 1.5em;
+  }
+
+  #paddle {
+    position: absolute;
+    bottom: 10px;
+    left: 120px;
+    font-size: 1.2em;
+    white-space: nowrap;
+    font-family: monospace;
+  }
+
+  #pong-score {
+    width: 300px;
+    margin: 10px auto 0;
+    text-align: center;
+    font-size: 1.2em;
+    font-family: monospace;
+    color: white;
+  }
+
+  #pong-over {
+    text-align: center;
+    color: white;
+  }
+
+  .flower {
+    position: absolute;
+    font-size: 1.5em;
+    user-select: none;
+    pointer-events: none;
+  }
+</style>
+
+</head>
+<body style="background-color:#543B6E">
+ <nav>
+   <a href="../index">Back to Home</a> 🌸 <a href="../weblog">Back to Weblog</a>
+ </nav>
+
+ <h1>Pong</h1>
+ <p>Use arrow keys (left/right), a/d keys. Not supported on touchscreen.</p>
+
+ <div id="pong-game">
+  <div id="ball">🌸</div>
+  <div id="paddle">⬜⬜⬜⬜⬜</div>
+</div>
+
+<div id="pong-score">Hits: 0</div>
+
+<div id="pong-over" hidden>
+  <p>Game Over</p>
+  <button onclick="startPong()">Restart</button>
+</div>
+
+<script>
+const gameArea = document.getElementById("pong-game");
+const ball = document.getElementById("ball");
+const paddle = document.getElementById("paddle");
+const gameOverScreen = document.getElementById("pong-over");
+const pongScoreDisplay = document.getElementById("pong-score");
+
+let ballX = 100, ballY = 100;
+let ballVX = 2, ballVY = -2;
+let paddleX = 140; // center for 300px width paddle area
+let gameLoop;
+let hitCount = 0;
+let gameRunning = false;
+
+const flowers = []; // Array to track flower obstacles
+
+function updatePong() {
+  if (!gameRunning) return;  // Freeze update on game over
+
+  // Move main ball
+  ballX += ballVX;
+  ballY += ballVY;
+
+  // Bounce left/right walls
+  if (ballX <= 0 || ballX >= gameArea.clientWidth - 30) ballVX *= -1;
+  // Bounce top
+  if (ballY <= 0) ballVY *= -1;
+
+  // Paddle collision for main ball
+  if (
+    ballY + 20 >= paddle.offsetTop &&
+    ballX + 10 >= paddleX &&
+    ballX <= paddleX + paddle.offsetWidth &&
+    ballVY > 0  // only bounce if ball moving downward
+  ) {
+    ballVY *= -1;
+    ballY = paddle.offsetTop - 20;
+    hitCount++;
+    pongScoreDisplay.innerText = "Hits: " + hitCount;
+    if (isPowerOfThree(hitCount)) {
+      spawnFlower();
+    }
+  }
+
+  // Update flowers positions, bounce on walls and paddle, bounce off ball
+  updateFlowers();
+
+  // End game if ball hits bottom (missed paddle)
+  if (ballY > gameArea.clientHeight) {
+    endGame();
+  }
+
+  // Also end game if any flower hits bottom (missed paddle)
+  for (const f of flowers) {
+    if (f.y > gameArea.clientHeight) {
+      endGame();
+      break;
+    }
+  }
+
+  ball.style.left = ballX + "px";
+  ball.style.top = ballY + "px";
+  paddle.style.left = paddleX + "px";
+}
+
+function updateFlowers() {
+  for (let i = flowers.length - 1; i >= 0; i--) {
+    const f = flowers[i];
+    f.x += f.vx;
+    f.y += f.vy;
+
+    // Bounce off left/right walls
+    if (f.x <= 0) {
+      f.x = 0;
+      f.vx *= -1;
+    }
+    if (f.x >= gameArea.clientWidth - f.width) {
+      f.x = gameArea.clientWidth - f.width;
+      f.vx *= -1;
+    }
+
+    // Bounce off top wall
+    if (f.y <= 0) {
+      f.y = 0;
+      f.vy *= -1;
+    }
+
+    // Bounce off paddle (if flower touches paddle from above)
+    const touchingNow = (
+      f.y + f.height >= paddle.offsetTop &&
+      f.y + f.height <= paddle.offsetTop + 10 &&
+      f.x + f.width >= paddleX &&
+      f.x <= paddleX + paddle.offsetWidth &&
+      f.vy > 0
+    );
+
+    if (touchingNow) {
+      f.vy *= -1;
+      f.y = paddle.offsetTop - f.height;
+
+      // Count hit only if was NOT touching paddle before
+      if (!f.touchingPaddle) {
+        hitCount++;
+        pongScoreDisplay.innerText = "Hits: " + hitCount;
+        if (isPowerOfThree(hitCount)) {
+          spawnFlower();
+        }
+      }
+
+      f.touchingPaddle = true; // mark as touching now
+    } else {
+      f.touchingPaddle = false; // reset if not touching
+    }
+
+    // Bounce off main ball if overlapping
+    if (rectsOverlap(f.x, f.y, f.width, f.height, ballX, ballY, 20, 20)) {
+      // Reverse velocities of both flower and ball
+      f.vx *= -1;
+      f.vy *= -1;
+      ballVX *= -1;
+      ballVY *= -1;
+
+      // Nudge positions so they separate
+      f.x += f.vx;
+      f.y += f.vy;
+      ballX += ballVX;
+      ballY += ballVY;
+    }
+
+    f.el.style.left = f.x + "px";
+    f.el.style.top = f.y + "px";
+  }
+}
+
+function rectsOverlap(x1, y1, w1, h1, x2, y2, w2, h2) {
+  return !(x2 > x1 + w1 || 
+           x2 + w2 < x1 || 
+           y2 > y1 + h1 ||
+           y2 + h2 < y1);
+}
+
+function spawnFlower() {
+  const flower = document.createElement("div");
+  flower.innerText = "🌸";
+  flower.classList.add("flower");
+
+  // Random start position (leave some margin so flower fully visible)
+  const x = Math.random() * (gameArea.clientWidth - 30);
+  const y = Math.random() * (gameArea.clientHeight - 60);
+  flower.style.left = x + "px";
+  flower.style.top = y + "px";
+
+  gameArea.appendChild(flower);
+
+  // Always start moving upward (vy negative)
+  let vx = (Math.random() * 2 + 1) * (Math.random() < 0.5 ? 1 : -1);
+  let vy = -Math.abs(Math.random() * 2 + 1);
+
+  flowers.push({ el: flower, x, y, vx, vy, width: 30, height: 30 });
+}
+
+function isPowerOfThree(n) {
+  if (n <= 1) return false;
+  while (n % 3 === 0) {
+    n /= 3;
+  }
+  return n === 1;
+}
+
+function endGame() {
+  clearInterval(gameLoop);
+  gameRunning = false;
+  gameOverScreen.hidden = false;
+  // Do NOT clear screen or remove flowers/ball, freeze objects where they are
+}
+
+function startPong() {
+  ballX = 100;
+  ballY = 100;
+  ballVX = 2;
+  ballVY = -2;
+  paddleX = (gameArea.clientWidth - paddle.offsetWidth) / 2;
+  hitCount = 0;
+  pongScoreDisplay.innerText = "Hits: 0";
+  ball.style.left = ballX + "px";
+  ball.style.top = ballY + "px";
+  gameOverScreen.hidden = true;
+
+  // Remove any existing flowers and clear array
+  flowers.forEach(f => f.el.remove());
+  flowers.length = 0;
+
+  gameRunning = true;
+  gameLoop = setInterval(updatePong, 16);
+}
+
+document.addEventListener("keydown", (e) => {
+  if (!gameRunning) return; // ignore controls when game stopped
+  if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a") paddleX -= 20;
+  if (e.key === "ArrowRight" || e.key.toLowerCase() === "d") paddleX += 20;
+
+  paddleX = Math.max(0, Math.min(paddleX, gameArea.clientWidth - paddle.offsetWidth));
+});
+
+gameArea.addEventListener("touchmove", (e) => {
+  if (!gameRunning || e.touches.length !== 1) return;
+
+  const touchX = e.touches[0].clientX;
+
+  // Convert screen X to game area's X
+  const gameRect = gameArea.getBoundingClientRect();
+  const relativeX = touchX - gameRect.left;
+
+  // Center paddle under finger
+  paddleX = relativeX - paddle.offsetWidth / 2;
+
+  // Clamp paddle within game area
+  paddleX = Math.max(0, Math.min(paddleX, gameArea.clientWidth - paddle.offsetWidth));
+  paddle.style.left = paddleX + "px";
+});
+
+
+startPong();
+</script>
+
+</body>
+</html>

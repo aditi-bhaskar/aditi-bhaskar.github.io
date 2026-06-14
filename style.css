@@ -1,0 +1,171 @@
+
+:root {
+  --bg:       #543B6E;
+  --h-color:  #F5EEFF;
+  --p-color:  #EDDBFD;
+  --a-color:  #D7F3DB;
+  --li-color: #C7A8E4;
+  --accent:   #89B89E;
+}
+
+[data-theme="light"] {
+  --bg:       #FFF9DE;
+  --h-color:  #3B2A4A;
+  --p-color:  #4A3760;
+  --a-color:  #7A4FA0;
+  --li-color: #6B5080;
+  --accent:   #C9A227;
+}
+
+:root {
+  --card-1-bg: #F5EEFF; --card-1-fg: #543B6E;
+  --card-2-bg: #C7A8E4; --card-2-fg: #3B2A4A;
+  --card-3-bg: #89B89E; --card-3-fg: #1F3D30;
+  --card-4-bg: #9878C8; --card-4-fg: #F5EEFF;
+  --card-5-bg: #EDC9E0; --card-5-fg: #5A3450;
+  --card-6-bg: #F6D6A8; --card-6-fg: #5A3D1A;
+}
+
+[data-theme="light"] {
+  --card-1-bg: #6E4A9E; --card-1-fg: #FFF9DE;
+  --card-2-bg: #C7A8E4; --card-2-fg: #3B2A4A;
+  --card-3-bg: #89B89E; --card-3-fg: #1F3D30;
+  --card-4-bg: #4A3070; --card-4-fg: #FFF9DE;
+  --card-5-bg: #EDC9E0; --card-5-fg: #5A3450;
+  --card-6-bg: #D8A845; --card-6-fg: #4A3760;
+}
+
+html, body {
+  background-color: var(--bg);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1 {color: var(--h-color); font-family: "Lucida Handwriting", Monaco, Garamond;}
+
+h2 {color: var(--h-color); font-family: "Lucida Handwriting", Monaco, Garamond;}
+
+h3 {color: var(--h-color); font-family: "Lucida Handwriting", Monaco, Garamond;}
+
+h4 {color: var(--h-color); font-family: "Lucida Handwriting", Monaco, Garamond;}
+
+p {color: var(--p-color); font-family: Montserrat, Monaco, Garamond;}
+
+a {color: var(--a-color); font-family: Montserrat, Monaco, Garamond;}
+
+li {color: var(--li-color); font-family: Montserrat, Monaco, Garamond;}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--p-color);
+  opacity: 0.18;
+  margin: 1.1em 0;
+}
+
+/* theme toggle button, present on most pages */
+.theme-toggle {
+  position: fixed;
+  top: 12px; right: 12px;
+  background: rgba(0,0,0,0.12);
+  border: 1px solid var(--p-color);
+  border-radius: 50%;
+  width: 2em; height: 2em;
+  color: var(--p-color);
+  font-size: 1em;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 50;
+  opacity: 0.7;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.theme-toggle:hover { opacity: 1; transform: scale(1.08); }
+
+/* subtle highlight for secret-ish links */
+.secret-link {
+  opacity: 0.65;
+  transition: opacity 0.2s, text-shadow 0.2s;
+  text-decoration: none;
+}
+.secret-link:hover {
+  opacity: 1;
+  text-shadow: 0 0 6px var(--accent);
+}
+
+/* expandable title cards, used on projects/work/weblog pages */
+.card-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+  margin: 1em 0;
+}
+.card {
+  display: block;
+  border-radius: 16px;
+  padding: 0.85em 1.2em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: filter 0.2s;
+}
+.card:hover, .card.open {
+  filter: brightness(1.06);
+}
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1em;
+  font-family: "Lucida Handwriting", Monaco, Garamond;
+  font-size: 1.15em;
+  font-weight: bold;
+}
+.card-title .yr {
+  font-size: 0.7em;
+  opacity: 0.75;
+  white-space: nowrap;
+  font-family: Montserrat, Monaco, Garamond;
+  font-weight: normal;
+}
+.card-detail {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.25s ease, margin-top 0.3s ease;
+  font-family: Montserrat, Monaco, Garamond;
+  font-size: 0.92em;
+  line-height: 1.5;
+}
+.card-detail p {
+  color: inherit;
+}
+.card:hover .card-detail, .card.open .card-detail {
+  max-height: 400px;
+  opacity: 1;
+  margin-top: 0.6em;
+}
+.card-detail a {
+  text-decoration: underline;
+  margin-right: 0.8em;
+}
+.card-1 { background: var(--card-1-bg); color: var(--card-1-fg); }
+.card-2 { background: var(--card-2-bg); color: var(--card-2-fg); }
+.card-3 { background: var(--card-3-bg); color: var(--card-3-fg); }
+.card-4 { background: var(--card-4-bg); color: var(--card-4-fg); }
+.card-5 { background: var(--card-5-bg); color: var(--card-5-fg); }
+.card-6 { background: var(--card-6-bg); color: var(--card-6-fg); }
+.card-1 a, .card-2 a, .card-3 a, .card-4 a, .card-5 a, .card-6 a,
+.card-1 .card-title, .card-2 .card-title, .card-3 .card-title,
+.card-4 .card-title, .card-5 .card-title, .card-6 .card-title {
+  color: inherit;
+}
+
+highlight-green {
+  background: linear-gradient(180deg, #543B6E 60%, #89B89E 60%);
+  color: #FFFFFF;
+  font-size: 2em;
+  font-family: "Lucida Handwriting", Montserrat, Monaco, Garamond;
+}
+
+proj-details {
+  color: #FFFFFF;
+  margin-left: 0.5%;
+  font-family: Montserrat, Monaco, Garamond;
+}

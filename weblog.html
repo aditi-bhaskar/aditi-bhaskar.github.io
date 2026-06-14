@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quick Links</title>
+        <link rel="icon" type="image/x-icon" href="/images/a_pfp.jpg">
+        <link rel="stylesheet" type="text/css" href="style.css" media="all">
+        <script>
+          document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+        </script>
+    </head>
+    <body>
+        <button class="theme-toggle" onclick="toggleTheme()" title="toggle light/dark">&#127769;</button>
+        <nav>
+        <a href="index.html">Back to Home</a>
+        </nav>
+        <h1>Web-log</h1>
+        <p>Miscellaneous things I've written. Enjoy!</p>
+        <!-- <p> This page is an assorted collection of things I've written down because many people ask me. Or maybe I've written it down regardless because I like documentation. I like to write: fiction, research papers, journalistic articles, and more! Have fun reading and contact me with any suggestions on what I should write about next! </p> -->
+
+<h3>🌸Posts🌸</h3>
+
+<div class="card-grid">
+
+  <div class="card card-1" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Card games</span></div>
+    <div class="card-detail">
+      <p>Here is a collection of my favorite card games.</p>
+      <a href="pages/cards.html">Read more</a>
+    </div>
+  </div>
+
+  <div class="card card-2" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Journalism</span></div>
+    <div class="card-detail">
+      <p>I used to write for my high-school paper, Wilsonville Broadcast Network. Here are my articles!</p>
+      <a href="https://wilsonvillebroadcastnetwork.com/staff_name/aditi-bhaskar/">Read more</a>
+    </div>
+  </div>
+
+  <div class="card card-3" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Horoscopes</span></div>
+    <div class="card-detail">
+      <p>Silly project to see your future with... horoscopes!</p>
+      <a href="pages/horoscopes.html">Read more</a>
+    </div>
+  </div>
+
+</div>
+
+<h3>🌸Tools🌸</h3>
+
+<div class="card-grid">
+
+  <div class="card card-1" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Slash swap!</span></div>
+    <div class="card-detail">
+      <p>Swap / to \ (between file system types).</p>
+      <a href="tools/slash_swap.html">Try it</a>
+    </div>
+  </div>
+
+  <div class="card card-2" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Blackboard</span></div>
+    <div class="card-detail">
+      <p>Simple blackboard; draw with your cursor.</p>
+      <a href="blackboard.html">Try it</a>
+    </div>
+  </div>
+
+</div>
+
+<h3>🌸Games🌸</h3>
+
+<div class="card-grid">
+
+  <div class="card card-1" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Bittle</span></div>
+    <div class="card-detail">
+      <p>Singleplayer Wordle-inspired game, but with bits.</p>
+      <a href="https://bittlesuite.github.io/">Play</a>
+    </div>
+  </div>
+
+  <div class="card card-2" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Cover</span></div>
+    <div class="card-detail">
+      <p>Singleplayer snake-like game.</p>
+      <a href="tools/cover.html">Play</a>
+    </div>
+  </div>
+
+</div>
+
+
+
+        <!-- <p><a href="https://aditi-bhaskar.github.io/pages/provisional.html">(More)</a> Information, notes, and tips on filing a provisional patent!</p>     -->
+        <!-- <br>          -->
+        <!-- <p><a href="https://aditi-bhaskar.github.io/pages/email.html">(More)</a> Instructions to link a Gmail inbox to your Outlook inbox! </p>  -->
+        <!-- <br>         -->
+
+
+
+<!-- <h3>🌸Email Me!🌸</h3> -->
+
+        <!-- <p>Wondering why I call this page "<a href="https://en.wikipedia.org/wiki/Blog">weblog</a>" instead of "blog"? It's a truncation!</p> -->
+        <!-- <br><br>    -->
+        <!-- <p>Email me if you have an idea for me to write about!!</p> -->
+        <p>Disclaimer: This page and its contents are for entertainment purposes only.</p>
+
+        <script>
+          function toggleTheme() {
+            var cur = document.documentElement.getAttribute('data-theme');
+            var next = cur === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+          }
+        </script>
+    </body>
+</html>
+
+
+
+
+

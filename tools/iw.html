@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Imposter Word</title>
+ <link rel="icon" type="image/x-icon" href="/images/a_pfp.jpg" />
+ <link rel="stylesheet" type="text/css" href="../style.css" media="all" />
+
+
+</head>
+<body style="background-color:#543B6E">
+ <nav>
+   <a href="../index">Back to Home</a> 🌸 <a href="../weblog">Back to Weblog</a>
+ </nav>
+
+ <h1>Imposter Word</h1>
+
+
+<div id="word-box">
+  <p id="random-word"></p>
+  <button onclick="generateWord()">Generate Random Word</button>
+</div>
+
+<br>
+<br>
+<p>Imposter Word is a social deduction word game for 4 or more players. At the start of each round, 
+    all players except one are shown the same secret word—this player is the imposter and receives 
+    only a blank screen. Going around in a circle, each player says a single word that’s related to 
+    the secret word. The imposter must listen carefully and try to blend in by saying a plausible 
+    related word, even though they don’t know what the original word is. After as many rounds as needed,
+    once the group has unanimously decided on the imposter, the truth is revealed. If the imposter is 
+    correctly identified, the group wins; if not, the imposter wins!
+</p>
+
+<script>
+const topics = [
+  "smoothie", "priest", "blanket", "lava", "moonlight", "pencil", "whistle",
+  "trampoline", "museum", "ballet", "carrot", "plumber", "telescope", "volcano",
+  "dentist", "parrot", "suitcase", "cactus", "circus", "marble", "rainbow", "pajamas",
+  "scarf", "puzzle", "spaceship", "dragon", "banjo", "saddle", "mirror", "notebook",
+  "compass", "lantern", "igloo", "croissant", "jukebox", "anchor", "zeppelin", "quilt",
+  "ladder", "meadow", "giraffe", "cabinet", "typewriter", "candle", "pebble", "crayon",
+  "glacier", "chimney", "accordion", "postcard", "origami", "coconut", "fountain", "whisk",
+  "snowflake", "doormat", "flashlight", "sandcastle", "microscope", "noodle", "helmet",
+  "thermometer", "toucan", "binoculars", "sock", "beehive", "hammock", "broomstick",
+  "slinky", "snowman", "laundry", "ladle", "kettle", "fireplace", "trophy", "backpack",
+  "skateboard", "squid", "pretzel", "toothbrush", "popsicle", "jellyfish", "bowtie",
+  "zebra", "seashell", "wagon", "calculator", "scooter", "nest", "marshmallow", "yo-yo",
+  "goblet", "canoe", "panther", "meatball", "waffle", "pencilcase", "submarine",
+  "pinecone", "sundial", "shampoo", "toolbox", "ukulele", "gloves", "domino", "gazebo",
+  "mailbox", "muffin", "trumpet", "garlic", "cliff", "mailman", "suit", "jungle", "zipper",
+  "cupcake", "penguin", "sandwich", "beacon", "mantis", "pickle", "slipper",
+  "train", "easel", "lanternfish", "saxophone", "bathtub", "tornado", "nesting doll",
+  "clipboard", "peach", "pliers", "bucket", "curtain", "elbow", "garage", "keyboard",
+  "magnet", "spider", "ribbon", "plank", "cherry", "trenchcoat", "napkin", "twig",
+  "cushion", "sneeze", "button", "buckle", "cradle", "beanbag",
+  "calendar", "stapler", "clover", "antenna", "tissue", "drawer", "hazelnut",
+  "spatula", "bandaid", "tunnel", "spoon", "icicle", "creek",
+  "barrel", "pillow", "carpet", "lint", "chalk", "windmill", "apron", "grapefruit",
+  "earring", "monkey", "tricycle", "velcro", "onion", "toaster", "lighthouse", "beanstalk", 
+  "thermos", "shovel", "wig", "ketchup", "plaster", "doorknob", "drizzle", "mop", "ticket"
+];
+
+function generateWord() {
+  if (topics.length === 0) {
+    document.getElementById("random-word").textContent = "No more words!";
+    return;
+  }
+  const index = Math.floor(Math.random() * topics.length);
+  const word = topics.splice(index, 1)[0];  // removes the word and stores it
+  document.getElementById("random-word").textContent = word;
+}
+</script>
+
+
+</body>
+</html>

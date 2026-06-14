@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>About</title>
+ <link rel="icon" type="image/x-icon" href="/images/a_pfp.jpg">
+ <link rel="stylesheet" type="text/css" href="style.css" media="all">
+ <script>
+   document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+ </script>
+</head>
+<body>
+ <button class="theme-toggle" onclick="toggleTheme()" title="toggle light/dark">&#127769;</button>
+ <nav>
+ <a href="index.html">Back to Home</a>
+ </nav>
+ <h1>About</h1>
+
+ <p>Click or hover a title to read more.</p>
+
+ <div class="card-grid">
+
+  <div class="card card-1" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Education</span></div>
+    <div class="card-detail">
+      <p>
+        &#127794; Wilsonville High School. Graduation: 2023.<br>
+        &#127794; Stanford University. Graduation: 2027. B.S. EE (Hardware/Software Track).<br>
+        &#127794; Stanford University. Graduation: 2027. M.S. CS (Computer Systems Track).
+      </p>
+    </div>
+  </div>
+
+  <div class="card card-2" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Technical Interests</span></div>
+    <div class="card-detail">
+      <p>I like low-level systems: the kind where you have to actually understand the hardware to make progress. There's something satisfying about building up a mental model, taking some measurements, and then optimizing. I'm drawn to the intersection of computer architecture and software, where knowing what's underneath changes how you think about what's on top.</p>
+    </div>
+  </div>
+
+  <div class="card card-3" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Delights</span></div>
+    <div class="card-detail">
+      <p>I like coding. And also, soldering, reading, waltzing, crafting, embroidering, climbing, writing.</p>
+      <img src="https://imgs.xkcd.com/comics/review.png" alt="xkcd comic 2192" style="width:250px;">
+    </div>
+  </div>
+
+  <div class="card card-4" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Languages: Human</span></div>
+    <div class="card-detail">
+      <p>
+        🌸 English (fluent)<br>
+        🌸 Spanish (advanced, Oregon Seal of Biliteracy)<br>
+        🌸 Tamil (intermediate)<br>
+        🌸 Others I'm trying to learn include: Greek, Japanese, ASL, Morse code (debatably not a human language)
+      </p>
+    </div>
+  </div>
+
+  <div class="card card-5" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Languages: Computer</span></div>
+    <div class="card-detail">
+      <p>
+        🌸 C++<br>
+        🌸 C<br>
+        🌸 Python<br>
+        🌸 ARM, RISC-V, MIPS assembly
+      </p>
+    </div>
+  </div>
+
+  <div class="card card-6" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Quote Selections</span></div>
+    <div class="card-detail">
+      <p>"There is an art to flying, or rather a knack. The knack lies in learning how to throw yourself at the ground and miss." ~Douglas Adams</p>
+      <p>"The case stands like this. I was told a story—an improbable, but not an impossible story." ~Agatha Christie</p>
+    </div>
+  </div>
+
+  <div class="card card-1" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>What's my website theme?</span></div>
+    <div class="card-detail">
+      <p>Purple! There are lots of hyperlinks and some secret pages. I like adventures, so this website is one too.</p>
+    </div>
+  </div>
+
+ </div>
+
+ <script>
+   function toggleTheme() {
+     var cur = document.documentElement.getAttribute('data-theme');
+     var next = cur === 'light' ? 'dark' : 'light';
+     document.documentElement.setAttribute('data-theme', next);
+     localStorage.setItem('theme', next);
+   }
+ </script>
+</body>
+</html>

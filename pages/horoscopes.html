@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Horoscopes</title>
+ <link rel="icon" type="image/x-icon" href="/images/a_pfp.jpg">
+ <link rel="stylesheet" type="text/css" href="../style.css" media="all">
+ <script>
+   document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+ </script>
+</head>
+<body>
+ <button class="theme-toggle" onclick="toggleTheme()" title="toggle light/dark">&#127769;</button>
+ <nav>
+ <a href="../index.html">Back to Home</a>
+ </nav>
+
+ <h1>Horoscopes!</h1>
+ <p>Click or hover a sign to read your fortune.</p>
+
+ <div class="card-grid">
+
+  <div class="card card-1" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Capricorn (Dec-Jan)</span></div>
+    <div class="card-detail"><p>Next time you climb through a window, you will see a monkey.</p></div>
+  </div>
+
+  <div class="card card-2" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Aquarius (Jan-Feb)</span></div>
+    <div class="card-detail"><p>If you carry a towel, there's no need to panic.</p></div>
+  </div>
+
+  <div class="card card-3" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Pisces (Feb-Mar)</span></div>
+    <div class="card-detail"><p>Be wary of sporks.</p></div>
+  </div>
+
+  <div class="card card-4" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Aries (Mar-Apr)</span></div>
+    <div class="card-detail"><p>Tie all shoelaces in an unusual method for the next 2 days.</p></div>
+  </div>
+
+  <div class="card card-5" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Taurus (Apr-May)</span></div>
+    <div class="card-detail"><p>Only hide three boxes, the fourth will be found.</p></div>
+  </div>
+
+  <div class="card card-6" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Gemini (May-Jun)</span></div>
+    <div class="card-detail"><p>Curtains are not for jumproping.</p></div>
+  </div>
+
+  <div class="card card-1" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Cancer (Jun-Jul)</span></div>
+    <div class="card-detail"><p>Reclining seats may bear gifts.</p></div>
+  </div>
+
+  <div class="card card-2" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Leo (Jul-Aug)</span></div>
+    <div class="card-detail"><p>Look 5 meters to your left (9:00) at the next animal crossing sign you see.</p></div>
+  </div>
+
+  <div class="card card-3" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Virgo (Aug-Sep)</span></div>
+    <div class="card-detail"><p>Next time you hear the word "radians" you will see success.</p></div>
+  </div>
+
+  <div class="card card-4" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Libra (Sep-Oct)</span></div>
+    <div class="card-detail"><p>Rocks should not be kept in glass jars.</p></div>
+  </div>
+
+  <div class="card card-5" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Scorpio (Oct-Nov)</span></div>
+    <div class="card-detail"><p>The year 2025 will bring you many square-shaped souvenirs.</p></div>
+  </div>
+
+  <div class="card card-6" onclick="this.classList.toggle('open')">
+    <div class="card-title"><span>Sagittarius (Nov-Dec)</span></div>
+    <div class="card-detail"><p>ctrl-s is your friend.</p></div>
+  </div>
+
+ </div>
+
+ <p>Email me if your predictions come true!!</p>
+ <p>Disclaimer: The content on this page is completely made up. It is for entertainment purposes only.</p>
+
+ <script>
+   function toggleTheme() {
+     var cur = document.documentElement.getAttribute('data-theme');
+     var next = cur === 'light' ? 'dark' : 'light';
+     document.documentElement.setAttribute('data-theme', next);
+     localStorage.setItem('theme', next);
+   }
+ </script>
+</body>
+</html>
